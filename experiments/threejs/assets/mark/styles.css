@@ -1,0 +1,6 @@
+.mark-logo{
+  position: fixed;
+  top: 25px;
+  left: 25px;
+  z-index: 99;
+}
