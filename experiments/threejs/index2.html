@@ -48,9 +48,10 @@
     var light2 = new THREE.PointLight(0xffffff, 0.5);
     scene.add(light2);
 
-    var material = new THREE.MeshLambertMaterial({
+    var material = new THREE.MeshStandardMaterial({
       color: 0xE83544,
-      //wireframe: true,
+      roughness: 0.2,
+      metalness: 0.2,
     });
     var material2 = new THREE.MeshBasicMaterial({
       color: 0x172F4C,
