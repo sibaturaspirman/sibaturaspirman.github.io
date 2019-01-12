@@ -42,7 +42,7 @@
       p.x += sin(vertexDisplacement) * 50.0;
       p.y += cos(vertexDisplacement) * 50.0;
 
-      vec4 modelViewPosition = modelViewMatrix * vec4(p, 1.0);
+      vec4 modelViewPosition = modelViewMatrix * vec4(p, 1);
       gl_Position = projectionMatrix * modelViewPosition;
     }
   </script>
@@ -52,7 +52,7 @@
     varying vec3 vUv;
 
     void main(){
-      float r = 1.0 + cos(vUv.y);
+      float r = 1.0 + vUv.y / sin(vUv.x);
       float g = 0.0;
       float b = 0.0;
 
@@ -102,9 +102,9 @@
     });
 
     // var geometry = new THREE.TorusKnotGeometry(20, 7, 100, 3);
-    var geometry = new THREE.BoxBufferGeometry(200, 150, 100, 10, 10, 10);
+    var geometry = new THREE.BoxBufferGeometry(220, 150, 100, 10, 10, 10);
     var mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(0, -15, -700);
+    mesh.position.set(-20, -30, -460);
     scene.add(mesh);
 
     var geometry2 = new THREE.PlaneGeometry(10000, 10000, 100, 100);
@@ -128,7 +128,7 @@
 
       mesh.material.uniforms.delta.value = 0.5 + Math.sin(delta) * 0.5;
       // mesh.rotation.x += 0.007;
-      mesh.rotation.y += 0.007;
+      // mesh.rotation.y += 0.007;
 
       for(var i = 0; i < vertexDisplacement.length; i ++){
         vertexDisplacement[i] = 0.5 + Math.sin(i + delta) * 0.25;
