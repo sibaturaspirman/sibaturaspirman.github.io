@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>ThreeJS | Experiments - Asep Irman (Creative Technologists)</title>
-  <link rel="shortcut icon" href="../assets/mark/favicon.png" type="image/png">
+  <link rel="shortcut icon" href="assets/mark/favicon.png" type="image/png">
 
   <!-- CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-  <link rel="stylesheet" href="../assets/mark/styles.css">
+  <link rel="stylesheet" href="assets/mark/styles.css">
   <style>
     body{
       background-color: black;
@@ -21,13 +21,13 @@
 <body>
   
   <!-- Mark -->
-  <a class="mark-logo" href="#"><img src="../assets/mark/Logo.svg" alt="Asep Irman"></a>
+  <a class="mark-logo" href="#"><img src="assets/mark/Logo.svg" alt="Asep Irman"></a>
 
   <!-- Spaces -->
   <canvas id="canvasArea"></canvas>
 
   <!-- Scripts -->
-  <script src="../assets/js/three.min.js"></script>
+  <script src="assets/js/three.min.js"></script>
   <script>
     // Setup
     var renderer = new THREE.WebGLRenderer({
@@ -39,6 +39,7 @@
     renderer.setSize(window.innerWidth, window.innerHeight);
 
     var camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 3000);
+    // camera.position.set(0, 0, -1000);
 
     var scene = new THREE.Scene();
 
@@ -48,27 +49,14 @@
     var light2 = new THREE.PointLight(0xffffff, 0.5);
     scene.add(light2);
 
-    var material = new THREE.MeshLambertMaterial({
-      color: 0xE83544,
-    });
-    var material2 = new THREE.MeshBasicMaterial({
-      color: 0x172F4C,
-      transparent: true,
-      opacity: 0.3,
-      wireframe: true,
-      wireframeLinewidth: 20
-    });
-
     var geometry = new THREE.CubeGeometry(100, 100, 100);
+    var material = new THREE.MeshLambertMaterial({
+      color: 0xE83544
+    });
     var mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(0, 0, -900);
-    scene.add(mesh);
+    mesh.position.set(0, 0, -700);
 
-    var geometry2 = new THREE.PlaneGeometry(10000, 10000, 100, 100);
-    var mesh2 = new THREE.Mesh(geometry2, material2);
-    mesh2.rotation.x = -90 * Math.PI / 180;
-    mesh2.position.y = -100;
-    scene.add(mesh2);
+    scene.add(mesh);
 
     render();
     function render(){
