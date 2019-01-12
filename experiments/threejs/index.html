@@ -38,7 +38,7 @@
       canvas : document.getElementById("canvasArea"),
       antialias : true
     });
-    renderer.setClearColor(0x00ff00);
+    renderer.setClearColor(0xE0E046);
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
 
@@ -55,10 +55,10 @@
 
     var geometry = new THREE.CubeGeometry(100, 100, 100);
     var material = new THREE.MeshLambertMaterial({
-      color: 0xf5f5f5
+      color: 0xE83544
     });
     var mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(0, 0, -1000);
+    mesh.position.set(0, 0, -700);
 
     scene.add(mesh);
 
