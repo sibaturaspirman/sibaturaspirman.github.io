@@ -26,14 +26,45 @@
   <!-- Spaces -->
   <div class="mark-pages">
     <a href="index.html">Demo 1</a>
-    <a href="index2.html" class="active">Demo 2</a>
+    <a href="index2.html">Demo 2</a>
     <a href="index3.html">Demo 3</a>
-    <a href="index4.html">Demo 4</a>
+    <a href="index4.html" class="active">Demo 4</a>
   </div>
   <canvas id="canvasArea"></canvas>
 
   <!-- Scripts -->
   <script src="assets/js/three.min.js"></script>
+  <script type="x-shader/x-vertex" id="vertexShader">
+    attribute float vertexDisplacement;
+    uniform float delta;
+    varying float vOpacity;
+    varying vec3 vUv;
+
+    void main(){
+      vUv = position;
+      vOpacity = vertexDisplacement;
+
+      vec3 p = position;
+      p.x += sin(vertexDisplacement) * 50.0;
+      p.y += cos(vertexDisplacement) * 50.0;
+
+      vec4 modelViewPosition = modelViewMatrix * vec4(p, 1);
+      gl_Position = projectionMatrix * modelViewPosition;
+    }
+  </script>
+  <script type="x-shader/x-fragment" id="fragmentShader">
+    uniform float delta;
+    varying float vOpacity;
+    varying vec3 vUv;
+
+    void main(){
+      float r = 1.0 + vUv.y / sin(vUv.x);
+      float g = 0.0;
+      float b = 0.0;
+
+      gl_FragColor = vec4(r, g, b, vOpacity);
+    }
+  </script>
   <script>
     // Setup
     var renderer = new THREE.WebGLRenderer({
@@ -54,11 +85,6 @@
     var light2 = new THREE.PointLight(0xffffff, 0.5);
     scene.add(light2);
 
-    var material = new THREE.MeshStandardMaterial({
-      color: 0xE83544,
-      roughness: 0.2,
-      metalness: 0.2,
-    });
     var material2 = new THREE.MeshBasicMaterial({
       color: 0xE83544,
       transparent: true,
@@ -67,9 +93,19 @@
       wireframeLinewidth: 1
     });
 
-    var geometry = new THREE.TorusKnotGeometry(20, 7, 100, 3);
+    var customUniforms = {
+      delta: {value: 0}
+    };
+    var material = new THREE.ShaderMaterial({
+      uniforms: customUniforms,
+      vertexShader: document.getElementById("vertexShader").textContent,
+      fragmentShader: document.getElementById("fragmentShader").textContent
+    });
+
+    // var geometry = new THREE.TorusKnotGeometry(20, 7, 100, 3);
+    var geometry = new THREE.BoxBufferGeometry(220, 150, 100, 9, 0, 0);
     var mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(0, 0, -250);
+    mesh.position.set(-20, -30, -460);
     scene.add(mesh);
 
     var geometry2 = new THREE.PlaneGeometry(10000, 10000, 100, 100);
@@ -78,10 +114,31 @@
     mesh2.position.y = -100;
     scene.add(mesh2);
 
+    var vertexDisplacement = new Float32Array(geometry.attributes.position.count);
+    for(var i = 0; i < vertexDisplacement.length; i += 1){
+      vertexDisplacement[i] = Math.sin(i);
+    }
+
+    geometry.addAttribute('vertexDisplacement', new THREE.BufferAttribute(vertexDisplacement, 1));
+
+    var delta = 0;
+
     render();
     function render(){
-      mesh.rotation.x += 0.04;
-      mesh.rotation.y += 0.04;
+      delta += 0.1;
+
+      mesh.material.uniforms.delta.value = 0.5 + Math.sin(delta) * 0.5;
+      // mesh.rotation.x += 0.007;
+      // mesh.rotation.y += 0.007;
+
+      for(var i = 0; i < vertexDisplacement.length; i ++){
+        vertexDisplacement[i] = 0.5 + Math.sin(i + delta) * 0.25;
+      }
+
+      mesh.geometry.attributes.vertexDisplacement.needsUpdate = true;
+      
+
+
 
       renderer.render(scene, camera);
       requestAnimationFrame(render);
