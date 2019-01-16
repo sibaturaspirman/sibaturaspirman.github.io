@@ -131,7 +131,7 @@
           var light2 = new THREE.PointLight(0xffffff, 0.5);
           scene.add(light2);
 
-          var geometry = new THREE.CubeGeometry(100, 100, 100);
+          var geometry = new THREE.TorusKnotGeometry(20, 7, 100, 3);
           var material = new THREE.MeshStandardMaterial({
             color: 0xE83544,
             roughness: 0.2,
@@ -147,13 +147,13 @@
             mesh.rotation.y += 0.04;
 
             setTimeout(function(){
-              mesh.position.x = 190;
+              mesh.position.x = 60;
               if(mesh.position.y >= 0){
                 mesh.position.y = mesh.position.y;
               }else{
                 mesh.position.y += 4;
               }
-              mesh.position.z = -600;
+              mesh.position.z = -230;
             }, 100);
 
             renderer.render(scene, camera);
