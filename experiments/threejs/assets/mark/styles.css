@@ -38,3 +38,8 @@ body{
   background-color: #E83544;
   color: #E0E046;
 }
+.mark-title{
+  position: fixed;
+  top: 45px;
+  right: 25px;
+}
