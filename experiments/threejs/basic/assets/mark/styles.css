@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik:400,700');
+body{
+  font-family: 'Rubik', sans-serif;
+  color: #172F4C;
+}
+.mark-logo{
+  position: fixed;
+  top: 35px;
+  left: 25px;
+  z-index: 99;
+}
+.mark-pages{
+  position: fixed;
+  left: 25px;
+  bottom: 35px;
+  display: flex;
+  align-items: center;
+  z-index: 99;
+}
+.mark-pages span{
+  display: block;
+  margin-right: 6px;
+  font-weight: bold;
+}
+.mark-pages a{
+  display: block;
+  padding: 12px 31px;
+  color: #ffffff;
+  background-color: #172F4C;
+  text-decoration: none;
+  margin: 0 5px;
+  border-radius: 22px;
+  transition: all ease 200ms;
+  font-size: 13px;
+}
+.mark-pages a.active,
+.mark-pages a:hover{
+  background-color: #E83544;
+  color: #E0E046;
+}
+.mark-title{
+  position: fixed;
+  top: 45px;
+  right: 25px;
+}

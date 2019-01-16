@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ThreeJS | Experiments - Asep Irman (Creative Technologists)</title>
+  <link rel="shortcut icon" href="assets/mark/favicon.png" type="image/png">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link rel="stylesheet" href="assets/mark/styles.css">
+  <style>
+    body{
+      background-color: #E0E046;
+    }
+    canvas{
+      width: 100%;
+      height: 100%
+    }
+  </style>
+
+</head>
+<body>
+  
+  <!-- Mark -->
+  <a class="mark-logo" href="#"><img src="assets/mark/Logo.svg" alt="Asep Irman"></a>
+  <div class="mark-title">/Basic ThreeJS</div>
+
+  <!-- Spaces -->
+
+  <!-- Scripts -->
+  <script src="assets/js/WebGL.js"></script>
+  <script src="assets/js/three.min.js"></script>
+  <script>
+    // Setup
+    var camera, scene, renderer;
+    var geometry, material, mesh;
+
+    init();
+    if (WEBGL.isWebGLAvailable()) {
+      animate();
+    } else {
+        var warning = WEBGL.getWebGLErrorMessage();
+        console.log(warning);
+    }
+
+    //check WebGL2
+    if(WEBGL.isWebGLAvailable() == false){
+      console.log(WEBGL.getWebGL2ErrorMessage());
+    }
+
+    function init(){
+      scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+      renderer = new THREE.WebGLRenderer({alpha:true});
+      renderer.setSize( window.innerWidth, window.innerHeight );
+      document.body.appendChild( renderer.domElement );
+
+      geometry = new THREE.BoxGeometry( 1, 1, 1 );
+      material = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
+      mesh = new THREE.Mesh( geometry, material );
+      scene.add( mesh );
+
+      camera.position.z = 5;
+    }
+    function animate() {
+      requestAnimationFrame( animate );
+      renderer.render( scene, camera );
+
+      mesh.rotation.x += 0.01;
+      mesh.rotation.y += 0.01;
+    }
+  </script>
+
+</body>
+</html>
