@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ThreeJS | Experiments - Asep Irman (Creative Technologists)</title>
+  <link rel="shortcut icon" href="assets/mark/favicon.png" type="image/png">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link rel="stylesheet" href="assets/mark/styles.css">
+  <style>
+    body{
+      background-color: #E0E046;
+    }
+    canvas{}
+  </style>
+
+</head>
+<body>
+  
+  <!-- Mark -->
+  <a class="mark-logo" href="#"><img src="assets/mark/Logo.svg" alt="Asep Irman"></a>
+  <div class="mark-title">/Basic ThreeJS</div>
+
+  <!-- Spaces -->
+  <div class="mark-pages">
+    <a href="index.html">Demo 1</a>
+    <a href="index2.html">Demo 2</a>
+    <a href="index3.html">Demo 3</a>
+    <a href="index4.html">Demo 4</a>
+    <a href="index5.html">Demo 5</a>
+    <a href="index6.html">Demo 6</a>
+    <a href="index7.html" class="active">Demo 1</a>
+  </div>
+  <canvas id="canvasArea"></canvas>
+
+  <!-- Scripts -->
+  <script src="assets/js/three.min.js"></script>
+  <script>
+    var deg2rad = Math.PI / 180;
+    var camera, scene, renderer, controls;
+
+    var animate = function(){
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+    }
+
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
+    camera.eulerOrder = "ZXY";
+
+    scene = new THREE.Scene();
+    var folder = "http://learningthreejs.com/data/lets_do_a_sky/images/Bridge2/";
+    var sides = [
+        [folder + "posz.jpg", 0, 0, 100, 0, 0, 0],
+        [folder + "posx.jpg", 100, 0, 0, 0, 1.57, 0],
+        [folder + "negz.jpg", 0, 0, -100, 0, 3.14, 0],
+        [folder + "negx.jpg", -100, 0, 0, 0, 4.71, 0 ],
+        [folder + "negy.jpg", 0, 100, 0, 4.71, 0, 0 ],
+        [folder + "posy.jpg", 0, -100, 0, 1.57, 0, 0 ]
+    ];
+
+    var cube = new THREE.CSS3DObject( document.createElement('div') );
+    for (var i = 0; i < sides.length; i ++) {
+        var element = document.createElement('img');
+        element.src = sides[i][0];
+        element.style.width = '800px';
+        element.style.height = '800px';
+        
+        var object = new THREE.CSS3DObject(element);
+        object.position.set(
+            sides[i][1],
+            sides[i][2],
+            sides[i][3]
+        );
+        object.rotation.set(
+            sides[i][4],
+            sides[i][5],
+            sides[i][6]
+        );
+        object.scale.set(
+            0.25,
+            0.25,
+            1
+        );
+        cube.add(object);
+    }
+    cube.rotation.x = -90;
+    scene.add(cube);
+
+    if (typeof window.DeviceOrientationEvent != "undefined") {
+        window.addEventListener("deviceorientation", function(e) {
+            camera.rotation.set (
+                !e.beta  ? 0 : e.beta * deg2rad,
+                !e.gamma ? 0 : e.gamma * deg2rad,
+                !e.alpha ? 0 : e.alpha * deg2rad
+            );
+        }, false);
+        
+        renderer = new THREE.CSS3DRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.domElement.style.position = 'absolute';
+        renderer.domElement.style.top = 0;
+        document.body.appendChild(renderer.domElement);
+    } else {
+        alert("Device Orientation not supported");
+    }
+
+    animate();
+  </script>
+
+</body>
+</html>
