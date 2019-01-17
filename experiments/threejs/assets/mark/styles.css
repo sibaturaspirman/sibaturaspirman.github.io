@@ -42,4 +42,10 @@ body{
   position: fixed;
   top: 45px;
   right: 25px;
+  z-index: 99;
+  text-align: right;
+  line-height: 1.3;
+}
+.mark-title a{
+  color: #172F4C;
 }
