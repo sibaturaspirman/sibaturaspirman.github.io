@@ -46,6 +46,21 @@ img{
     top: 0;
     height: 100%;
     z-index: 1;
+    @include vendor(transition, all cubic-bezier(0.39, 0.575, 0.565, 1) 150ms);
+    &.zoom{
+      @include vendor(transform, scale(1.22) translateY(2%) translateX(-1%));
+      .teaser{
+        &-mobile{
+          &__viewfinderinfo{
+            &-top,
+            &-middle,
+            &-bottom{
+              opacity: 0;
+            }
+          }
+        }
+      }
+    }
     &__viewfinderinfo{
       &-top{
         position: absolute;
@@ -73,7 +88,7 @@ img{
         margin: auto;
         left: 0;
         right: 0;
-        @include vendor(transform, translateY(-250%));
+        @include vendor(transform, translateY(-100%));
         z-index: 3;
         @include vendor(transition, all ease 350ms);
       }
@@ -125,7 +140,7 @@ img{
       justify-content: center;
       z-index: 1;
       &-cta{
-        @include vendor(transform, translateY(-40%));
+        @include vendor(transform, translateY(-13%));
         position: absolute;
         width: 100%;
         z-index: 2;
@@ -160,7 +175,7 @@ img{
         display: block;
         content: "";
         width: 100%;
-        padding-top: (191 / 360) * 100%;
+        padding-top: 15%;
       }
       > .inner {
         position: absolute;
@@ -210,7 +225,7 @@ img{
     @include vendor(filter, blur(15px));
   }
   100% {
-    @include vendor(filter, blur(5px));
+    @include vendor(filter, blur(0px));
   }
 }
 
