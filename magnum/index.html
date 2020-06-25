@@ -35,7 +35,7 @@
 <body class="teaser">
 
   <!-- SOFTGATE -->
-  <div class="softgate" style="display: none;">
+  <div class="softgate">
     <div class="softgate__content">
       <h2>VERIFIKASI UMUR</h2>
       <p>Situs ini diperuntukan bagi perokok berusia 18 tahun ke atas yang tinggal di Indonesia.</p>
@@ -108,7 +108,7 @@
             <option value="1971">1971</option>
             <option value="1970">1970</option>
           </select>
-          <button>LANJUT</button>
+          <button id="lanjutButton">LANJUT</button>
         </form>
       </div>
     </div>
@@ -176,6 +176,11 @@
     $("#mobileTap").click(function(){
       $("#mobileCTA").addClass("hide");
       $(".video-player").addClass("focus");
+    });
+
+    
+    $("#lanjutButton").click(function(){
+      $(".softgate").hide();
     });
   });
   </script>
