@@ -13,6 +13,32 @@ img{
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
+  &.focus{
+    .teaser{
+      &-mobile{
+        &__top,
+        &__action,
+        &__frame{
+          // opacity: 0;
+          // @include vendor(transform, scale(2));
+        }
+        &__content{
+          &-video{
+            width: 100%;
+            top: 0;
+          }
+        }
+        &__viewfinderinfo{
+          &-top,
+          &-middle,
+          &-bottom{
+            // opacity: 0;
+            
+          }
+        }
+      }
+    }
+  }
   &-mobile{
     position: fixed;
     left: 0;
@@ -29,6 +55,7 @@ img{
         top: 0;
         right: 0;
         @include vendor(transform, translateX(1%) translateY(90%));
+        @include vendor(transition, all ease 350ms);
       }
       &-bottom{
         position: absolute;
@@ -38,6 +65,7 @@ img{
         top: 0;
         right: 0;
         @include vendor(transform, translateX(1%) translateY(-110%));
+        @include vendor(transition, all ease 350ms);
       }
       &-middle{
         position: absolute;
@@ -47,6 +75,7 @@ img{
         right: 0;
         @include vendor(transform, translateY(-250%));
         z-index: 3;
+        @include vendor(transition, all ease 350ms);
       }
     }
     &__top{
@@ -57,6 +86,7 @@ img{
       background-size: cover;
       background-position: center;
       z-index: 3;
+      @include vendor(transition, all ease 350ms);
       &:before {
         display: block;
         content: "";
@@ -83,6 +113,7 @@ img{
       background-image: url(../images/VIEWFINDER-MIDDLE.png);
       background-size: 100%;
       background-repeat: repeat-y;
+      @include vendor(transition, all ease 350ms);
     }
     &__content{
       position: fixed;
@@ -113,6 +144,7 @@ img{
         width: 80%;
         top: 5%;
         z-index: 1;
+        @include vendor(transition, all ease 350ms);
       }
     }
     &__action{
@@ -122,6 +154,7 @@ img{
       background-image: url(../images/FRAME-ACTION-AFT.png);
       background-size: cover;
       background-position: center;
+      @include vendor(transition, all ease 350ms);
       z-index: 4;
       &:before {
         display: block;
@@ -150,12 +183,34 @@ img{
 .video-player{
   @include vendor(filter, blur(50px));
   @include vendor(transition, all ease 1050ms);
-  transition-delay: 1s;
   &.focus{
     @include vendor(filter, blur(0px));
+    @include vendor(transition, all ease 2050ms);
+  }
+  &.animation{
+    animation: focusAnimation 3.2s infinite;
   }
   video{
     width: 100%;
+  }
+}
+
+
+@keyframes focusAnimation {
+  0%   {
+    @include vendor(filter, blur(8px));
+  }
+  25%  {
+    @include vendor(filter, blur(15px));
+  }
+  50%  {
+    @include vendor(filter, blur(35px));
+  }
+  75%  {
+    @include vendor(filter, blur(15px));
+  }
+  100% {
+    @include vendor(filter, blur(5px));
   }
 }
 

@@ -175,7 +175,15 @@
   $(document).ready(function () {
     $("#mobileTap").click(function(){
       $("#mobileCTA").addClass("hide");
-      $(".video-player").addClass("focus");
+      $(".video-player").addClass("animation");
+
+      setTimeout(function(){ 
+        $(".video-player").removeClass("animation");
+        $(".video-player").addClass("focus");
+      }, 3000);
+
+      $(".teaser").addClass("focus");
+
     });
 
     
