@@ -88,7 +88,7 @@ img{
         margin: auto;
         left: 0;
         right: 0;
-        @include vendor(transform, translateY(-100%));
+        @include vendor(transform, translateY(-170%));
         z-index: 3;
         @include vendor(transition, all ease 350ms);
       }
@@ -140,7 +140,7 @@ img{
       justify-content: center;
       z-index: 1;
       &-cta{
-        @include vendor(transform, translateY(-13%));
+        @include vendor(transform, translateY(-21%));
         position: absolute;
         width: 100%;
         z-index: 2;
