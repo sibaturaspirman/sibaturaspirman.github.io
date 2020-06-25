@@ -134,8 +134,8 @@
       </div>
       <div class="teaser-mobile__content-video">
         <div class="video-player">
-          <video autoplay muted loop>
-            <source src="assets/videos/video.webm" type="video/webm">
+          <video muted loop id="mobileVideo">
+            <source src="assets/videos/video.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </div>
@@ -173,6 +173,7 @@
   <script src="assets/js/jquery-3.5.1.min.js"></script>
   <script>
   $(document).ready(function () {
+    var vid = document.getElementById("mobileVideo");
     $("#mobileTap").click(function(){
       $("#mobileCTA").addClass("hide");
       $(".video-player").addClass("animation");
@@ -184,6 +185,7 @@
 
       setTimeout(function(){ 
         $(".teaser-mobile").addClass("zoom");
+        vid.play();
       }, 2900);
 
       $(".teaser").addClass("focus");
