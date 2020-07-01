@@ -1,0 +1,640 @@
+// - - - - - - - - - - - - - - - - - - -
+// - - components
+
+// - - global components styles
+img{
+  display: block;
+  max-width: 100%;
+}
+
+//--TEASER
+.teaser{
+  background-image: url(../images/BG-DESKTOP.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  &.focus{
+    .teaser{
+      &-mobile{
+        &__content{
+          &-video{
+            // width: 80%;
+            top: -3%;
+          }
+        }
+      }
+      &-desktop{
+        &__viewfinderinfo{
+          &-top,
+          &-middle,
+          &-bottom{
+            opacity: 0;
+          }
+        }
+      }
+    }
+  }
+  &-mobile{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 100%;
+    z-index: 1;
+    @include vendor(transition, transform cubic-bezier(0.39, 0.575, 0.565, 1) 250ms);
+    display: none;
+    @include bp-425(){
+      display: block;
+    }
+    &.zoom{
+      // @include vendor(transform, scale(1.3) translateY(8.8%) translateX(-0.9%));
+      @include vendor(transform, scale(1.38) translateY(8.5%) translateX(0%));
+      .teaser{
+        &-mobile{
+          &__viewfinderinfo{
+            &-top,
+            &-middle,
+            &-bottom{
+              opacity: 0;
+            }
+          }
+          &__content{
+            &-video{
+              width: 80%;
+            }
+          }
+        }
+      }
+    }
+    &__viewfinderinfo{
+      &-top{
+        position: absolute;
+        width: 84%;
+        margin: auto;
+        left: 0;
+        top: 0;
+        right: 0;
+        @include vendor(transform, translateX(-0.5%) translateY(30%));
+        @include vendor(transition, all ease 350ms);
+      }
+      &-bottom{
+        position: absolute;
+        width: 84%;
+        margin: auto;
+        left: 0;
+        top: 0;
+        right: 0;
+        @include vendor(transform, translateX(-0.5%) translateY(-110%));
+        @include vendor(transition, all ease 350ms);
+      }
+      &-middle{
+        position: absolute;
+        width: 10%;
+        margin: auto;
+        left: 0;
+        right: 0;
+        @include vendor(transform, translateY(-205%));
+        z-index: 3;
+        @include vendor(transition, all ease 350ms);
+      }
+    }
+    &__top{
+      position: fixed;
+      width: 100%;
+      top: 0%;
+      background-image: url(../images/CAMERA-TOP.png);
+      background-size: cover;
+      background-position: center;
+      z-index: 3;
+      @include vendor(transition, all ease 350ms);
+      &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: (48 / 191) * 100%;
+      }
+      > .inner {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+    }
+    &__frame{
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      background-image: url(../images/CAMERA-CENTER.png);
+      background-size: 100%;
+      background-repeat: repeat-y;
+      @include vendor(transition, all ease 350ms);
+    }
+    &__content{
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      &-cta{
+        @include vendor(transform, translateY(-34%));
+        position: absolute;
+        width: 100%;
+        z-index: 2;
+        &.hide{
+          img{
+            @include vendor(transform, translateY(-40%));
+            opacity: 0;
+          }
+        }
+        img{
+          @include vendor(transition, all cubic-bezier(0.39, 0.575, 0.565, 1) 250ms);
+        }
+      }
+      &-video{
+        position: absolute;
+        width: 91%;
+        top: 2%;
+        z-index: 1;
+        @include vendor(transition, all ease 350ms);
+      }
+    }
+    &__action{
+      position: fixed;
+      width: 100%;
+      bottom: 60px;
+      background-image: url(../images/CAMERA-BOTTOM.png);
+      background-size: cover;
+      background-position: top center;
+      @include vendor(transition, all ease 350ms);
+      z-index: 4;
+      &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: 30%;
+      }
+      > .inner {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    &__button{
+      width: 26%;
+      @include vendor(transform, translateY(15%));
+      opacity: 0;
+    }
+    &__arrow{
+      position: absolute;
+      width: 10%;
+      margin: auto;
+      top: 0;
+      @include vendor(transform, translateY(-22%));
+      @include vendor(transition, all cubic-bezier(0.39, 0.575, 0.565, 1) 250ms);
+      &.hide{
+        @include vendor(transform, translateY(-40%));
+        opacity: 0;
+      }
+      img{
+        @include vendor(animation, bottomTop 850ms ease-in-out infinite alternate);
+      }
+    }
+  }
+  &-desktop{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: calc(100% - 60px);
+    z-index: 1;
+    @include bp-425(){
+      display: none;
+    }
+    &__viewfinderinfo{
+      &-top{
+        position: absolute;
+        width: 90%;
+        margin: auto;
+        left: 0;
+        top: 0;
+        right: 0;
+        @include vendor(transform, translateX(-0.5%) translateY(18%));
+        @include vendor(transition, all ease 350ms);
+        z-index: 2;
+      }
+      &-bottom{
+        position: absolute;
+        width: 90%;
+        margin: auto;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        @include vendor(transform, translateX(-0.5%) translateY(-18%));
+        @include vendor(transition, all ease 350ms);
+        z-index: 2;
+      }
+      &-middle{
+        position: absolute;
+        width: 15%;
+        height: 100%;
+        margin: auto;
+        left: 0;
+        right: 0;
+        z-index: 4;
+        @include vendor(transition, all ease 350ms);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    &__content{
+      position: absolute;
+      width: 28vw;
+      top: 0;
+      @include bp-1024(){
+        width: 40vw;
+      }
+      @include bp-768(){
+        width: 65vw;
+      }
+      &-wrapper{
+        position: relative;
+        width: 64%;
+        @include vendor(transform, translate(10.5%, 16%));
+        overflow: hidden;
+        &:before {
+          display: block;
+          content: "";
+          width: 100%;
+          padding-top: (89 / 80) * 100%;
+        }
+        > .inner {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+        }
+      }
+      &-cta{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &.hide{
+          img{
+            @include vendor(transform, translateY(-40%));
+            opacity: 0;
+          }
+        }
+        img{
+          @include vendor(transition, all cubic-bezier(0.39, 0.575, 0.565, 1) 250ms);
+        }
+      }
+      &-video{
+        position: absolute;
+        width: 100%;
+        top: -20%;
+        z-index: 1;
+        @include vendor(transition, all ease 350ms);
+      }
+      &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: (89 / 110) * 100%;
+      }
+      > .inner {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+    }
+    &__frame{
+      position: relative;
+      width: 28vw;
+      @include bp-1024(){
+        width: 40vw;
+      }
+      @include bp-768(){
+        width: 65vw;
+      }
+      &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: (793 / 660) * 100%;
+      }
+      > .inner {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+    }
+    &__camera{
+      position: relative;
+      width: 100%;
+      background-image: url(../images/DESKTOP-CAMERA.png);
+      background-size: cover;
+      background-position: center;
+      z-index: 3;
+      // @include vendor(transform, translateY(-60px));
+      &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: (793 / 660) * 100%;
+      }
+      > .inner {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+    }
+    &__bottom{
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: (13 / 33) * 100%;
+      }
+      > .inner {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;;
+      }
+    }
+    &__button{
+      width: 26%;
+      @include vendor(transform, translateY(26%) translateX(-55%));
+      opacity: 0;
+      margin: auto;
+      top: 0;
+      left: 0;
+      right: 0;
+      cursor: pointer;
+    }
+    &__arrow{
+      position: absolute;
+      width: 7%;
+      margin: auto;
+      top: 0;
+      left: 0;
+      right: 0;
+      @include vendor(transform, translateY(-50%) translateX(-165%));
+      @include vendor(transition, all cubic-bezier(0.39, 0.575, 0.565, 1) 250ms);
+      &.hide{
+        @include vendor(transform, translateY(-80%) translateX(-165%));
+        opacity: 0;
+      }
+      img{
+        @include vendor(animation, bottomTop 850ms ease-in-out infinite alternate);
+      }
+    }
+  }
+}
+
+.video-player{
+  @include vendor(filter, blur(50px));
+  @include vendor(transition, all ease 1050ms);
+  position: relative;
+  &.focus{
+    @include vendor(filter, blur(0px));
+    @include vendor(transition, all ease 2050ms);
+  }
+  &.animation{
+    animation: focusAnimation 3.2s infinite;
+  }
+  video{
+    width: 100%;
+  }
+  &__front{
+    position: relative;
+    z-index: 2;
+  }
+  &__back{
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
+}
+
+//ANIMATION
+@keyframes focusAnimation {
+  0%   {
+    @include vendor(filter, blur(8px));
+  }
+  25%  {
+    @include vendor(filter, blur(15px));
+  }
+  50%  {
+    @include vendor(filter, blur(35px));
+  }
+  75%  {
+    @include vendor(filter, blur(15px));
+  }
+  100% {
+    @include vendor(filter, blur(0px));
+  }
+}
+@keyframes bottomTop{
+  0%{
+    @include vendor(transform, translateY(-10%));
+  }
+  100%{
+    @include vendor(transform, translateY(10%));
+  }
+}
+
+//--SOFTGATE
+.softgate{
+  background-color: rgba(0,0,0,.6);
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    padding: 42px 35px;
+    background-color: $color--red;
+    color: $color--white;
+    max-width: 600px;
+    @include vendor(transform, translateY(-10%));
+    @include bp-425(){
+      width: 90%;
+      padding: 35px 20px;
+    }
+    h2{
+      font-size: 35px;
+      line-height: 1.1;
+      margin-bottom: .7rem;
+      text-align: center;
+      @include bp-425(){
+        font-size: 28px;
+        margin-bottom: .3rem;
+      }
+    }
+    p{
+      font-family: $font--pmfuturis-book-text;
+      font-size: 20px;
+      text-align: center;
+      line-height: 1.2;
+      @include bp-425(){
+        font-size: 14px;
+      }
+    }
+  }
+  &__form{
+    margin-top: 1rem;
+    width: 100%;
+    form{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      select{
+        font-size: 18px;
+        font-family: $font--pmfuturis-book-text;
+        border: 0;
+        padding: 12px 15px;
+        padding-right: 30px;
+        margin: 0 .5rem;
+        width: 33.333%;
+        height: 44px;
+        outline: none;
+        @include vendor(appearance, none);
+
+        background-color: $color--white;
+        background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgMjU2IDI1NiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjU2IDI1NjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGc+DQoJCTxwb2x5Z29uIHBvaW50cz0iMjI1LjgxMyw0OC45MDcgMTI4LDE0Ni43MiAzMC4xODcsNDguOTA3IDAsNzkuMDkzIDEyOCwyMDcuMDkzIDI1Niw3OS4wOTMgCQkiLz4NCgk8L2c+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8L3N2Zz4NCg==);
+        background-repeat: no-repeat, repeat;
+        background-position: right .7em top 50%, 0 0;
+        background-size: .65em auto, 100%;
+
+        @include bp-425(){
+          width: calc(50% - 1rem);
+        }
+      }
+      button{
+        font-family: $body--text__font;
+        font-size: 18px;
+        font-weight: 600;
+        border: 0;
+        padding: 12px 18px;
+        height: 44px;
+        background-color: $color--black;
+        color: $color--white;
+        cursor: pointer;
+        outline: none;
+        margin: 0 .5rem;
+        @include bp-425(){
+          width: 100%;
+          margin-top: 1rem;
+        }
+      }
+    }
+  }
+}
+
+//--GHW
+.ghw{
+  width: 100%;
+  padding: 9px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $color--black;
+  color: $color--white;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 12;
+  &__image{
+    height: 42px;
+  }
+  &__text{
+    text-align: center;
+    font-family: Arial,Helvetica,sans-serif;
+    line-height: 1.4;
+    font-size: 15px;
+    @include bp-768(){
+      p{
+        span{
+          display: block;
+        }
+      }
+    }
+    @include bp-425(){
+      font-size: 8px;
+    }
+  }
+  &__age{
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 16px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color--white;
+    color: $color--white;
+    border-radius: 50%;
+    position: relative;
+    min-width: 32px;
+    max-width: 32px;
+    flex-grow: 1;
+    &:after{
+      content: "18+";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%,-50%);
+      transform: translate(-50%,-50%);
+      font-size: 16px;
+      @include bp-425(){
+        font-size: 14px;
+      }
+    }
+  }
+}
