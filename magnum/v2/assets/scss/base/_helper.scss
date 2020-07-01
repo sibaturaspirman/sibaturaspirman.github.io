@@ -1,0 +1,116 @@
+// - - - - - - - - - - - - - - - - - - -
+// - - helper
+// define global helper
+
+// - - layout
+.divider{
+    margin: 20px 0;
+    background: transparent;
+    height: 1px;
+    &--margin{
+        &-small{
+            margin: 10px 0;
+        }
+        &-small-extra{
+            margin: 5px 0;
+        }
+        &-big{
+            margin: 30px 0;
+        }
+        &-big-extra{
+            margin: 45px 0;
+        }
+    }
+    &--mobile{
+        display: none;
+        @include bp-768(){
+            display: block;
+        }
+    }
+    &--border{
+        // background: $color--white-flash-3;
+    }
+}
+
+.text-center{
+    text-align: center;
+}
+
+.mobile{
+    &-small{
+      &-show{
+        display: none;
+        @include bp-425(){
+          display: block;
+        }
+      }
+      &-hide{
+        @include bp-425(){
+          display: none;
+        }
+      }
+      &-text-center{
+        @include bp-425(){
+          text-align: center !important;
+        }
+      }
+      &-text-left{
+        @include bp-425(){
+          text-align: left !important;
+        }
+      }
+      &-text-right{
+        @include bp-425(){
+          text-align: right !important;
+        }
+      }
+      &-no-padding{
+        &-top{
+          @include bp-425(){
+            padding-top: 0;
+          }
+        }
+      }
+    }
+  }
+  
+  .tablet{
+    &-small{
+      &-show{
+        display: none;
+        @include bp-768(){
+          display: block;
+        }
+      }
+      &-hide{
+        display: block;
+        @include bp-768(){
+          display: none;
+        }
+      }
+      &-text-center{
+        @include bp-768(){
+          text-align: center !important;
+        }
+      }
+      &-text-left{
+        @include bp-768(){
+          text-align: left !important;
+        }
+      }
+    }
+    &-big{
+      &-show{
+        display: none;
+        @include bp-1024(){
+          display: block;
+        }
+      }
+      &-hide{
+        display: block;
+        @include bp-1024(){
+          display: none;
+        }
+      }
+    }
+  }
