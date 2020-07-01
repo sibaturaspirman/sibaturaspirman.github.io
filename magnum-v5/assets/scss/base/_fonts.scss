@@ -1,0 +1,87 @@
+// - - - - - - - - - - - - - - - - - - -
+// - - fonts
+// define global fonts
+
+// - - - - - - - - - - - - - - - - - - -
+// - - fonts use
+@font-face {
+	font-family: 'PM_Futuris';
+	src: url('../fonts/PMFuturis/PM_Futuris-Medium.woff2') format('woff2'),
+			url('../fonts/PMFuturis/PM_Futuris-Medium.woff') format('woff');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'PM_Futuris Book';
+	src: url('../fonts/PMFuturis/PM_Futuris-Book.woff2') format('woff2'),
+			url('../fonts/PMFuturis/PM_Futuris-Book.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'PM_Futuris';
+	src: url('../fonts/PMFuturis/PM_Futuris-Bold.woff2') format('woff2'),
+			url('../fonts/PMFuturis/PM_Futuris-Bold.woff') format('woff');
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'PM_Futuris';
+	src: url('../fonts/PMFuturis/PM_Futuris-Light.woff2') format('woff2'),
+			url('../fonts/PMFuturis/PM_Futuris-Light.woff') format('woff');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'PM_Futuris';
+	src: url('../fonts/PMFuturis/PM_Futuris-MediumObl.woff2') format('woff2'),
+			url('../fonts/PMFuturis/PM_Futuris-MediumObl.woff') format('woff');
+	font-weight: 500;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'PM_Futuris Book';
+	src: url('../fonts/PMFuturis/PM_Futuris-BookObl.woff2') format('woff2'),
+			url('../fonts/PMFuturis/PM_Futuris-BookObl.woff') format('woff');
+	font-weight: normal;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'PM_Futuris';
+	src: url('../fonts/PMFuturis/PM_Futuris-BoldObl.woff2') format('woff2'),
+			url('../fonts/PMFuturis/PM_Futuris-BoldObl.woff') format('woff');
+	font-weight: bold;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'PM_Futuris';
+	src: url('../fonts/PMFuturis/PM_Futuris-LightObl.woff2') format('woff2'),
+			url('../fonts/PMFuturis/PM_Futuris-LightObl.woff') format('woff');
+	font-weight: 300;
+	font-style: italic;
+	font-display: swap;
+}
+
+// - - - - - - - - - - - - - - - - - - -
+// - - descriptive fonts
+$font--pmfuturis-regular-text: 'PM_Futuris', 'Helvetica', 'Arial', sans-serif;
+$font--pmfuturis-book-text: 'PM_Futuris Book', 'Helvetica', 'Arial', sans-serif;
+
+
+// - - - - - - - - - - - - - - - - - - -
+// - - functional fonts
+$body--text__font: $font--pmfuturis-regular-text;
