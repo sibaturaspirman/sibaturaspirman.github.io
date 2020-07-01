@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div onclick="playPause()" style="font-size: 45px;">Play/Pause</div> <br>
+
+  <video id="vidQ" poster="POSTER.jpg" loop playsinline style="width: 100%;">
+    <source src="PM-TEASER.mp4" type="video/mp4">
+  </video>
+
+  <script type="text/javascript">
+    function playPause() {
+      var myVideo = document.getElementById('vidQ');
+      setTimeout(function(){ 
+        myVideo.play();
+      }, 1500);
+    }
+
+  </script>
+  
+</body>
+</html>
