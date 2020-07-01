@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="js-video">
+
+  <button class="js-video-play-button" aria-pressed="true" aria-label="Play video" type="button">Play</button>
+  <button class="a-button m-video__button js-video-pause-button" aria-pressed="false" aria-label="Pause video" type="button">Pause</button>
+
+  <video class="js-video-video" poster="POSTER.jpg" autoplay loop muted playsinline>
+    <source src="PM-TEASER.mp4" type="video/mp4">
+  </video>
+
+</div>
+  
+
+  <script>
+    /* Check if the users browser supports these features */
+    const enhance = 'querySelector' in document && 'addEventListener' in window && 'classList' in document.documentElement;
+
+    /* If the users browser browser supports the features we need, remove the no-enhance class from the html element and execute our video JS */
+    if(enhance) {
+      document.documentElement.classList.remove('no-enhance');
+        
+      /* Find all video molecules and instantiate a new instance of the Video class */
+      const videos = document.querySelectorAll('.js-video');
+      Array.from(videos).forEach((video) => {
+        const videoEl = new Video(video);
+      });
+    }
+    class Video {
+      constructor(video) {
+        this.videoContainer = video;
+        this.video = this.videoContainer.querySelector('.js-video-video');
+        this.playButton = this.videoContainer.querySelector('.js-video-play-button');
+        this.pauseButton = this.videoContainer.querySelector('.js-video-pause-button');
+            
+        this.prefersReducedMotion();
+        this.addEventListeners();
+      }
+        
+      prefersReducedMotion() {
+        /* If the users browser supports reduced motion and the user has set it to true, remove the autoplay attribute from the video and pause it */
+        if(matchMedia('(prefers-reduced-motion)').matches) {
+          this.video.removeAttribute('autoplay');
+          this.pauseVideo();
+        }
+      }
+        
+      addEventListeners() {
+        this.playButton.addEventListener('click', () => {
+          this.playVideo();
+          /* Focus the pause button so keyboard users can immediately pause the video without having to tab away and back again */
+          this.pauseButton.focus();
+        });
+            
+        this.pauseButton.addEventListener('click', () => {
+          this.pauseVideo();
+          /* Focus the play button so keyboard users can immediately play the video without having to tab away and back again */
+          this.playButton.focus();
+        });
+      }
+        
+      playVideo() {
+        this.video.play();
+        /* Set the play button as pressed so it's hidden and the pause button is displayed instead */
+        this.playButton.setAttribute('aria-pressed', 'true');
+        this.pauseButton.setAttribute('aria-pressed', 'false');
+      }
+        
+      pauseVideo() {
+        this.video.pause();
+        /* Set the pause button as pressed so it&rsquo;s hidden and the play button is displayed instead */
+        this.playButton.setAttribute('aria-pressed', 'false');
+        this.pauseButton.setAttribute('aria-pressed', 'true');
+      }
+    }
+  </script>
+  
+</body>
+</html>
