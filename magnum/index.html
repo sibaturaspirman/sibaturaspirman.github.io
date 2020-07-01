@@ -134,8 +134,14 @@
       </div>
       <div class="teaser-mobile__content-video">
         <div class="video-player">
-          <video muted loop id="mobileVideo">
-            <source src="assets/videos/video.mp4" type="video/mp4">
+          <video muted id="mobileVideo" poster="assets/videos/POSTER.jpg" class="video-player__front">
+            <source src="assets/videos/PM-TEASER.mp4" type="video/mp4">
+            <source src="assets/videos/PM-TEASER.webm" type="video/webm">
+            Your browser does not support the video tag.
+          </video>
+          <video muted loop id="mobileVideoBack" class="video-player__back">
+            <source src="assets/videos/PM-TEASER-Loop Idle.mp4" type="video/mp4">
+            <source src="assets/videos/PM-TEASER-Loop Idle.webm" type="video/webm">
             Your browser does not support the video tag.
           </video>
         </div>
@@ -146,8 +152,64 @@
         <div class="teaser-mobile__viewfinderinfo-bottom">
           <img src="assets/images/VIEWFINDER-INFO-BOTTOM.png" alt="">
         </div>
+        <div class="teaser-mobile__arrow" id="arrowMobileTap">
+          <img src="assets/images/ARROW.png" alt="Arrow">
+        </div>
         <div class="teaser-mobile__button" id="mobileTap">
           <img src="assets/images/Button.png" alt="Button">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="teaser-desktop">
+    <div class="teaser-desktop__frame">
+      <div class="inner">
+        <div class="teaser-desktop__content">
+          <div class="inner">
+            <div class="teaser-desktop__content-wrapper">
+              <div class="inner">
+                <div class="teaser-desktop__content-cta" id="desktopCTA">
+                  <img src="assets/images/CTA.png" alt="">
+                </div>
+                <div class="teaser-desktop__viewfinderinfo-top">
+                  <img src="assets/images/VIEWFINDER-INFO-TOP.png" alt="">
+                </div>
+                <div class="teaser-desktop__viewfinderinfo-middle">
+                  <img src="assets/images/VIEWFINDER-INFO-MIDDLE.png" alt="">
+                </div>
+                <div class="teaser-desktop__viewfinderinfo-bottom">
+                  <img src="assets/images/VIEWFINDER-INFO-BOTTOM.png" alt="">
+                </div>
+                <div class="teaser-desktop__content-video">
+                  <div class="video-player">
+                    <video muted id="desktopVideo" poster="assets/videos/POSTER.jpg" class="video-player__front">
+                      <source src="assets/videos/PM-TEASER.mp4" type="video/mp4">
+                      <source src="assets/videos/PM-TEASER.webm" type="video/webm">
+                      Your browser does not support the video tag.
+                    </video>
+                    <video muted loop id="desktopVideoBack" class="video-player__back">
+                      <source src="assets/videos/PM-TEASER-Loop Idle.mp4" type="video/mp4">
+                      <source src="assets/videos/PM-TEASER-Loop Idle.webm" type="video/webm">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="teaser-desktop__camera">
+          <div class="teaser-desktop__bottom">
+            <div class="inner">
+              <div class="teaser-desktop__arrow" id="arrowDesktopTap">
+                <img src="assets/images/ARROW.png" alt="Arrow">
+              </div>
+              <div class="teaser-desktop__button" id="desktopTap">
+                <img src="assets/images/Button.png" alt="Button">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -173,9 +235,13 @@
   <script src="assets/js/jquery-3.5.1.min.js"></script>
   <script>
   $(document).ready(function () {
-    var vid = document.getElementById("mobileVideo");
+
+    // MOBILE
+    var vidMobileFront = document.getElementById("mobileVideo");
+    var vidMobileBack = document.getElementById("mobileVideoBack");
     $("#mobileTap").click(function(){
       $("#mobileCTA").addClass("hide");
+      $("#arrowMobileTap").addClass("hide");
       $(".video-player").addClass("animation");
 
       setTimeout(function(){ 
@@ -185,11 +251,44 @@
 
       setTimeout(function(){ 
         $(".teaser-mobile").addClass("zoom");
-        vid.play();
       }, 2900);
+      setTimeout(function(){ 
+        vidMobileFront.play();
+
+        setTimeout(function(){
+          $("#mobileVideo").hide();
+          vidMobileBack.play();
+        }, 4900);
+      }, 1600);
 
       $(".teaser").addClass("focus");
 
+    });
+
+
+    // DESKTOP
+    var vidDesktopFront = document.getElementById("desktopVideo");
+    var vidDesktopBack = document.getElementById("desktopVideoBack");
+    $("#desktopTap").click(function(){
+      $("#desktopCTA").addClass("hide");
+      $("#arrowDesktopTap").addClass("hide");
+      $(".video-player").addClass("animation");
+
+      setTimeout(function(){ 
+        $(".video-player").removeClass("animation");
+        $(".video-player").addClass("focus");
+      }, 3000);
+
+      setTimeout(function(){ 
+        vidDesktopFront.play();
+
+        setTimeout(function(){
+          $("#desktopVideo").hide();
+          vidDesktopBack.play();
+        }, 4900);
+      }, 1600);
+
+      $(".teaser").addClass("focus");
     });
 
     

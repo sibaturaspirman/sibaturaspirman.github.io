@@ -16,24 +16,19 @@ img{
   &.focus{
     .teaser{
       &-mobile{
-        &__top,
-        &__action,
-        &__frame{
-          // opacity: 0;
-          // @include vendor(transform, scale(2));
-        }
         &__content{
           &-video{
-            // width: 100%;
-            top: 0;
+            // width: 80%;
+            top: -3%;
           }
         }
+      }
+      &-desktop{
         &__viewfinderinfo{
           &-top,
           &-middle,
           &-bottom{
-            // opacity: 0;
-            
+            opacity: 0;
           }
         }
       }
@@ -46,9 +41,14 @@ img{
     top: 0;
     height: 100%;
     z-index: 1;
-    @include vendor(transition, all cubic-bezier(0.39, 0.575, 0.565, 1) 150ms);
+    @include vendor(transition, transform cubic-bezier(0.39, 0.575, 0.565, 1) 250ms);
+    display: none;
+    @include bp-425(){
+      display: block;
+    }
     &.zoom{
-      @include vendor(transform, scale(1.3) translateY(7.8%) translateX(-0.9%));
+      // @include vendor(transform, scale(1.3) translateY(8.8%) translateX(-0.9%));
+      @include vendor(transform, scale(1.38) translateY(8.5%) translateX(0%));
       .teaser{
         &-mobile{
           &__viewfinderinfo{
@@ -58,28 +58,33 @@ img{
               opacity: 0;
             }
           }
+          &__content{
+            &-video{
+              width: 80%;
+            }
+          }
         }
       }
     }
     &__viewfinderinfo{
       &-top{
         position: absolute;
-        width: 70%;
+        width: 84%;
         margin: auto;
         left: 0;
         top: 0;
         right: 0;
-        @include vendor(transform, translateX(1%) translateY(90%));
+        @include vendor(transform, translateX(-0.5%) translateY(30%));
         @include vendor(transition, all ease 350ms);
       }
       &-bottom{
         position: absolute;
-        width: 70%;
+        width: 84%;
         margin: auto;
         left: 0;
         top: 0;
         right: 0;
-        @include vendor(transform, translateX(1%) translateY(-110%));
+        @include vendor(transform, translateX(-0.5%) translateY(-110%));
         @include vendor(transition, all ease 350ms);
       }
       &-middle{
@@ -88,7 +93,7 @@ img{
         margin: auto;
         left: 0;
         right: 0;
-        @include vendor(transform, translateY(-170%));
+        @include vendor(transform, translateY(-205%));
         z-index: 3;
         @include vendor(transition, all ease 350ms);
       }
@@ -96,8 +101,8 @@ img{
     &__top{
       position: fixed;
       width: 100%;
-      top: -4%;
-      background-image: url(../images/VIEWFINDER-TOP.png);
+      top: 0%;
+      background-image: url(../images/CAMERA-TOP.png);
       background-size: cover;
       background-position: center;
       z-index: 3;
@@ -106,7 +111,7 @@ img{
         display: block;
         content: "";
         width: 100%;
-        padding-top: (155 / 216) * 100%;
+        padding-top: (48 / 191) * 100%;
       }
       > .inner {
         position: absolute;
@@ -125,7 +130,7 @@ img{
       align-items: center;
       justify-content: center;
       z-index: 2;
-      background-image: url(../images/VIEWFINDER-MIDDLE.png);
+      background-image: url(../images/CAMERA-CENTER.png);
       background-size: 100%;
       background-repeat: repeat-y;
       @include vendor(transition, all ease 350ms);
@@ -140,7 +145,7 @@ img{
       justify-content: center;
       z-index: 1;
       &-cta{
-        @include vendor(transform, translateY(-21%));
+        @include vendor(transform, translateY(-34%));
         position: absolute;
         width: 100%;
         z-index: 2;
@@ -156,8 +161,8 @@ img{
       }
       &-video{
         position: absolute;
-        width: 80%;
-        top: 5%;
+        width: 91%;
+        top: 2%;
         z-index: 1;
         @include vendor(transition, all ease 350ms);
       }
@@ -166,16 +171,16 @@ img{
       position: fixed;
       width: 100%;
       bottom: 60px;
-      background-image: url(../images/FRAME-ACTION-AFT.png);
+      background-image: url(../images/CAMERA-BOTTOM.png);
       background-size: cover;
-      background-position: top 47% center;
+      background-position: top center;
       @include vendor(transition, all ease 350ms);
       z-index: 4;
       &:before {
         display: block;
         content: "";
         width: 100%;
-        padding-top: 25%;
+        padding-top: 30%;
       }
       > .inner {
         position: absolute;
@@ -189,8 +194,233 @@ img{
       }
     }
     &__button{
-      width: 20%;
-      @include vendor(transform, translateY(5%));
+      width: 26%;
+      @include vendor(transform, translateY(15%));
+      opacity: 0;
+    }
+    &__arrow{
+      position: absolute;
+      width: 10%;
+      margin: auto;
+      top: 0;
+      @include vendor(transform, translateY(-22%));
+      @include vendor(transition, all cubic-bezier(0.39, 0.575, 0.565, 1) 250ms);
+      &.hide{
+        @include vendor(transform, translateY(-40%));
+        opacity: 0;
+      }
+      img{
+        @include vendor(animation, bottomTop 850ms ease-in-out infinite alternate);
+      }
+    }
+  }
+  &-desktop{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: calc(100% - 60px);
+    z-index: 1;
+    @include bp-425(){
+      display: none;
+    }
+    &__viewfinderinfo{
+      &-top{
+        position: absolute;
+        width: 90%;
+        margin: auto;
+        left: 0;
+        top: 0;
+        right: 0;
+        @include vendor(transform, translateX(-0.5%) translateY(18%));
+        @include vendor(transition, all ease 350ms);
+        z-index: 2;
+      }
+      &-bottom{
+        position: absolute;
+        width: 90%;
+        margin: auto;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        @include vendor(transform, translateX(-0.5%) translateY(-18%));
+        @include vendor(transition, all ease 350ms);
+        z-index: 2;
+      }
+      &-middle{
+        position: absolute;
+        width: 15%;
+        height: 100%;
+        margin: auto;
+        left: 0;
+        right: 0;
+        z-index: 4;
+        @include vendor(transition, all ease 350ms);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    &__content{
+      position: absolute;
+      width: 28vw;
+      top: 0;
+      @include bp-1024(){
+        width: 40vw;
+      }
+      @include bp-768(){
+        width: 65vw;
+      }
+      &-wrapper{
+        position: relative;
+        width: 64%;
+        @include vendor(transform, translate(10.5%, 16%));
+        overflow: hidden;
+        &:before {
+          display: block;
+          content: "";
+          width: 100%;
+          padding-top: (89 / 80) * 100%;
+        }
+        > .inner {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+        }
+      }
+      &-cta{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &.hide{
+          img{
+            @include vendor(transform, translateY(-40%));
+            opacity: 0;
+          }
+        }
+        img{
+          @include vendor(transition, all cubic-bezier(0.39, 0.575, 0.565, 1) 250ms);
+        }
+      }
+      &-video{
+        position: absolute;
+        width: 100%;
+        top: -20%;
+        z-index: 1;
+        @include vendor(transition, all ease 350ms);
+      }
+      &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: (89 / 110) * 100%;
+      }
+      > .inner {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+    }
+    &__frame{
+      position: relative;
+      width: 28vw;
+      @include bp-1024(){
+        width: 40vw;
+      }
+      @include bp-768(){
+        width: 65vw;
+      }
+      &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: (793 / 660) * 100%;
+      }
+      > .inner {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+    }
+    &__camera{
+      position: relative;
+      width: 100%;
+      background-image: url(../images/DESKTOP-CAMERA.png);
+      background-size: cover;
+      background-position: center;
+      z-index: 3;
+      // @include vendor(transform, translateY(-60px));
+      &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: (793 / 660) * 100%;
+      }
+      > .inner {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+    }
+    &__bottom{
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: (13 / 33) * 100%;
+      }
+      > .inner {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;;
+      }
+    }
+    &__button{
+      width: 26%;
+      @include vendor(transform, translateY(26%) translateX(-55%));
+      opacity: 0;
+      margin: auto;
+      top: 0;
+      left: 0;
+      right: 0;
+      cursor: pointer;
+    }
+    &__arrow{
+      position: absolute;
+      width: 7%;
+      margin: auto;
+      top: 0;
+      left: 0;
+      right: 0;
+      @include vendor(transform, translateY(-50%) translateX(-165%));
+      @include vendor(transition, all cubic-bezier(0.39, 0.575, 0.565, 1) 250ms);
+      &.hide{
+        @include vendor(transform, translateY(-80%) translateX(-165%));
+        opacity: 0;
+      }
+      img{
+        @include vendor(animation, bottomTop 850ms ease-in-out infinite alternate);
+      }
     }
   }
 }
@@ -198,6 +428,7 @@ img{
 .video-player{
   @include vendor(filter, blur(50px));
   @include vendor(transition, all ease 1050ms);
+  position: relative;
   &.focus{
     @include vendor(filter, blur(0px));
     @include vendor(transition, all ease 2050ms);
@@ -208,9 +439,21 @@ img{
   video{
     width: 100%;
   }
+  &__front{
+    position: relative;
+    z-index: 2;
+  }
+  &__back{
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
 }
 
-
+//ANIMATION
 @keyframes focusAnimation {
   0%   {
     @include vendor(filter, blur(8px));
@@ -226,6 +469,14 @@ img{
   }
   100% {
     @include vendor(filter, blur(0px));
+  }
+}
+@keyframes bottomTop{
+  0%{
+    @include vendor(transform, translateY(-10%));
+  }
+  100%{
+    @include vendor(transform, translateY(10%));
   }
 }
 
