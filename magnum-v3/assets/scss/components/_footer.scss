@@ -1,0 +1,43 @@
+.blend{
+  .footer{
+    mix-blend-mode: screen;
+    filter: contrast(0.1);
+  }
+}
+
+.footer{
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  bottom: 0;
+  // mix-blend-mode: screen;
+  // filter: contrast(0.1);
+  .container-fluid{
+    padding: 2rem;
+    position: relative;
+    @include bp-425(){
+      padding: 1rem 1.4rem;
+    }
+  }
+  a{
+    display: inline-block;
+    position: relative;
+    img{
+      @include vendor(transition, all cubic-bezier(0.39, 0.575, 0.565, 1) 250ms);
+    }
+  }
+  &--show{
+    .footer{
+      &__light{
+        opacity: 1;
+      }
+    }
+  }
+  &__light{
+    opacity: 0;
+    position: absolute;
+    top: 4px;
+    left: 0;
+    z-index: 1;
+  }
+}
