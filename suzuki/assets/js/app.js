@@ -227,15 +227,20 @@
 
     header: function () {
       $('#triggerMenuBurger').click(function () {
-        $('.header').addClass('header--show');
-      });
-      $('#triggerMenuBurgerClose').click(function () {
-        $('.header').removeClass('header--show');
-      });
+        $('.menu').toggleClass('menu--active');
+        $('.menu-list').toggleClass('menu-list--show');
+        $('.header').toggleClass('header--hide');
+        $('.main').toggleClass('main--hide');
+        $('.backdrop').toggleClass('backdrop--hide');
 
-      if (window.matchMedia('(max-width: 1024px)').matches) {
-        $('.header').toggleClass('header--scroll');
-      }
+      });
+      // $('#triggerMenuBurgerClose').click(function () {
+      //   $('.header').removeClass('header--show');
+      // });
+
+      // if (window.matchMedia('(max-width: 1024px)').matches) {
+      //   $('.header').toggleClass('header--scroll');
+      // }
     }
   };
 
