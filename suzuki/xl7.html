@@ -138,7 +138,7 @@
     <div class="backdrop backdrop--hide" id="backdrop">&nbsp;</div>
     
     <header class="header">
-    	<a href="/index.html" class="logo">
+    	<a href="outlet.html" class="logo">
     		<div class="logo__image">
     			<img src="assets/images/logo.png" alt="Suzuki" />
     		</div>
@@ -157,7 +157,7 @@
     
     <div class="menu-list">
     	<nav>
-    		<a href="">Beranda</a>
+    		<a href="outlet.html">Beranda</a>
     		<a href="">Tentang Kami</a>
     		<a href="">Mobil</a>
     		<a href="">Service</a>
@@ -186,27 +186,6 @@
     	</p>
     </div>
     
-    <div class="floating">
-      <div class="floating__wrapper">
-        <a href="#">
-          <img src="assets/images/icons/wa.svg" alt="">
-          <span>WhatsApp</span>
-        </a>
-        <a href="#">
-          <img src="assets/images/icons/dh.svg" alt="">
-          <span>Daftar Harga</span>
-        </a>
-        <a href="#">
-          <img src="assets/images/icons/ps.svg" alt="">
-          <span>Pesan Servis</span>
-        </a>
-        <a href="#">
-          <img src="assets/images/icons/sk.svg" alt="">
-          <span>Simulasi Kredit</span>
-        </a>
-      </div>
-    </div>
-    
     <div class="breadcumb">
       <div class="breadcumb-title">
         XL 7
@@ -214,29 +193,107 @@
       <div class="breadcumb-tab">
         <ul class="nav nav-tabs tabs">
           <li class="nav-item">
-            <a class="nav-link active" href="#">Overview</a>
+            <a class="nav-link active" href="#overview">Overview</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Tipe & Warna</a>
+            <a class="nav-link" href="#tipe">Tipe & Warna</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Eksterior</a>
+            <a class="nav-link" href="#eksterior">Eksterior</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Interior</a>
+            <a class="nav-link" href="#interior">Interior</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Spesifikasi</a>
+            <a class="nav-link" href="#spesifikasi">Spesifikasi</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Harga</a>
+            <a class="nav-link" href="#harga">Harga</a>
           </li>
         </ul>
       </div>
     </div>
 
+    <div class="floating floating--car">
+      <div class="floating__wrapper">
+        <a href="javascript:;" data-toggle="modal" data-target="#exampleModal">
+          <div class="button button--fill button--fill-primary">
+            Booking Mobil
+          </div>
+        </a>
+        <a href="#">
+          <img src="assets/images/icons/wa.svg" alt="">
+          <span>WhatsApp</span>
+        </a>
+        <a href="#">
+          <img src="assets/images/icons/sk.svg" alt="">
+          <span>Simulasi Kredit</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Booking Mobil</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label">Nama Lengkap</label>
+                <input type="text" class="form-control" id="recipient-name">
+              </div>
+              <div class="form-group">
+                <label for="email" class="col-form-label">Email</label>
+                <input type="email" class="form-control" id="email">
+              </div>
+              <div class="form-group">
+                <label for="hp" class="col-form-label">No. Handphone</label>
+                <input type="text" class="form-control" id="hp">
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1">Mobile</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                      <option selected>XL 7</option>
+                      <option>Ertiga</option>
+                      <option>All New Ertiga Sport</option>
+                      <option>New Ignis</option>
+                      <option>Karimun</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1">Tipe</label>
+                    <select class="form-control" id="exampleFormControlSelect2">
+                      <option selected>ZETA M/T</option>
+                      <option>ZETA A/T</option>
+                      <option>BETA A/T</option>
+                      <option>BETA M/T</option>
+                      <option>ALPHA M/T</option>
+                      <option>ALPHA A/T</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="button button--border button--border-primary" data-dismiss="modal">Batal</button>
+            <button type="button" class="button button--fill button--fill-primary">Kirim</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
 		<main class="main main--page">
-      <section class="hero">
+      <section class="hero" id="overview">
         <div class="swiper-container" id="hero">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
@@ -290,8 +347,9 @@
         </div>
       </section>
       <div class="divider divider--margin-small"></div>
+      <div class="divider divider--margin-small"></div>
 
-      <section class="container-fluid title title--pd title--white">
+      <section class="container-fluid title title--pd title--white" id="tipe">
 				<div class="row">
 					<div class="col-12">
             <h2>TIPE & WARNA</h2>
@@ -437,125 +495,405 @@
         </div>
       </section>
       <div class="divider divider--margin-small"></div>
+      <div class="divider divider--margin-small"></div>
 
-      <section class="container-fluid title title--pd">
+      <section class="container-fluid title title--pd" id="eksterior">
 				<div class="row">
 					<div class="col-12">
             <h2>EKSTERIOR</h2>
             <div class="divider divider--margin-small"></div>
+            <div class="car-detail-eksint">
+              <img src="assets/images/content/xl7-eksterior.png" alt="">
+            </div>
           </div>
         </div>
       </section>
+      <div class="divider divider--margin-small"></div>
+      <div class="divider divider--margin-small"></div>
 
-			<!-- <section class="container-fluid title title--npb">
+      <section class="container-fluid title title--pd" id="interior">
 				<div class="row">
 					<div class="col-12">
-            <h1>Temukan Mobil Suzuki yang tepat untuk Anda</h1>
-					</div>
-				</div>
-        <div class="divider divider--margin-small"></div>
-        <div class="divider divider--margin-small"></div>
-        <div class="divider divider--margin-small"></div>
-        <ul class="nav nav-tabs tabs" id="tab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">Passenger Car</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">Commercial Car</a>
-          </li>
-        </ul>
-			</section>
-			<section class="container-fluid" style="background-color: #fff;">
+            <h2>INTERIOR</h2>
+            <div class="divider divider--margin-small"></div>
+            <div class="car-detail-eksint">
+              <img src="assets/images/content/xl7-interior.png" alt="">
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="divider divider--margin-small"></div>
+      <div class="divider divider--margin-small"></div>
+
+      <section class="container-fluid title title--pd title--white" id="spesifikasi">
 				<div class="row">
 					<div class="col-12">
-            <div class="tab-content" id="tabContent">
-              <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
-                <a href="xl7.html" class="car-list">
-                  <div class="car-list__image">
-                    <img src="assets/images/content/mobil-1.png" alt="">
+            <h2>SPESIFIKASI</h2>
+            <div class="divider divider--margin-small"></div>
+            <div id="accordion" class="car-detail-accordion">
+              <div class="card">
+                <div class="card-header" id="headingOne">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      DIMENSI
+                      <div class="card-header--toggle">
+                        <img src="assets/images/icons/down.svg" alt="Icon">
+                      </div>
+                    </button>
+                  </h5>
+                </div>
+            
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="card-body">
+                    <table class="w-100">
+                      <tbody>
+                          <tr>
+                            <th class="align-left">Panjang Keseluruhan</th>
+                            <td class="align-center">4,450 mm</td>
+                          </tr><tr>
+                            <th class="align-left">Lebar Keseluruhan</th>
+                            <td class="align-center">1,775 mm</td>
+                          </tr><tr>
+                            <th class="align-left">Tinggi Keseluruhan</th>
+                            <td class="align-center">1,710 mm</td>
+                          </tr><tr>
+                            <th class="align-left">Jarak Poros Roda</th>
+                            <td class="align-center">2,740 mm</td>
+                          </tr><tr>
+                            <th class="align-left">Jarak Pijak Depan</th>
+                            <td class="align-center">1,515 mm</td>
+                          </tr><tr>
+                            <th class="align-left">Jarak Pijak Belakang</th>
+                            <td class="align-center">1,530 mm</td>
+                          </tr><tr>
+                            <th class="align-left">Jarak Terendah</th>
+                            <td class="align-center">5,1</td>
+                          </tr><tr>
+                            <th class="align-left">Radius Putar Minimum</th>
+                            <td class="align-center">200 mm</td>
+                          </tr>                        
+                        </tbody>
+                    </table>
                   </div>
-                  <div class="car-list__info">
-                    <h4>XL 7</h4>
-                    <p>Mulai Dari</p>
-                    <h5>Rp 232.000.000</h5>
-                    <span class="tag">Lihat Detail</span>
-                  </div>
-                </a>
-                <a href="xl7.html" class="car-list">
-                  <div class="car-list__image">
-                    <img src="assets/images/content/mobil-2.png" alt="">
-                  </div>
-                  <div class="car-list__info">
-                    <h4>All New Ertiga</h4>
-                    <p>Mulai Dari</p>
-                    <h5>Rp 207.000.000</h5>
-                    <span class="tag">Lihat Detail</span>
-                  </div>
-                </a>
-                <a href="xl7.html" class="car-list">
-                  <div class="car-list__image">
-                    <img src="assets/images/content/mobil-3.png" alt="">
-                  </div>
-                  <div class="car-list__info">
-                    <h4>All New Ertiga Suzuki Sport</h4>
-                    <p>Mulai Dari</p>
-                    <h5>Rp 252.000.000</h5>
-                    <span class="tag">Lihat Detail</span>
-                  </div>
-                </a>
-                <a href="xl7.html" class="car-list">
-                  <div class="car-list__image">
-                    <img src="assets/images/content/mobil-4.png" alt="">
-                  </div>
-                  <div class="car-list__info">
-                    <h4>New Ignis</h4>
-                    <p>Mulai Dari</p>
-                    <h5>Rp 171.000.000</h5>
-                    <span class="tag">Lihat Detail</span>
-                  </div>
-                </a>
+                </div>
               </div>
-              <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
-                <a href="xl7.html" class="car-list">
-                  <div class="car-list__image">
-                    <img src="assets/images/content/mobil-5.png" alt="">
+              <div class="card">
+                <div class="card-header" id="headingTwo">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      MESIN
+                      <div class="card-header--toggle">
+                        <img src="assets/images/icons/down.svg" alt="Icon">
+                      </div>
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                  <div class="card-body">
+                    <table class="w-100">
+                      <tbody><tr>
+                            <th class="align-left">Jenis</th>
+                            <td class="align-center">K15B</td>
+                          </tr><tr>
+                            <th class="align-left">Isi Silinder</th>
+                            <td class="align-center">4</td>
+                          </tr><tr>
+                            <th class="align-left">Jumlah Katup</th>
+                            <td class="align-center">16</td>
+                          </tr><tr>
+                            <th class="align-left">Jumlah Silinder</th>
+                            <td class="align-center">1.462 cm<sup>3</sup></td>
+                          </tr><tr>
+                            <th class="align-left">Diameter x Langkah</th>
+                            <td class="align-center">74,0 x 85,0 mm</td>
+                          </tr><tr>
+                            <th class="align-left">Perbandingan Kompresi</th>
+                            <td class="align-center">10,5</td>
+                          </tr><tr>
+                            <th class="align-left">Daya Maksimum</th>
+                            <td class="align-center">77kW (104,7ps/6.000) KW/rpm</td>
+                          </tr><tr>
+                            <th class="align-left">Momem Puntir Maksimum</th>
+                            <td class="align-center">138 / 4.400Nm / rpm</td>
+                          </tr><tr>
+                            <th class="align-left">Sistem Bahan Bakar</th>
+                            <td class="align-center">Multipoint Injection</td>
+                          </tr>                        </tbody></table>
                   </div>
-                  <div class="car-list__info">
-                    <h4>New Carry Pick-Up</h4>
-                    <p>Mulai Dari</p>
-                    <h5>Rp 145.600.000</h5>
-                    <span class="tag">Lihat Detail</span>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="headingThree">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      TRANSMISI
+                      <div class="card-header--toggle">
+                        <img src="assets/images/icons/down.svg" alt="Icon">
+                      </div>
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                  <div class="card-body">
+                    <table class="w-100">
+                      <tbody><tr>
+                            <th class="align-left">Perbandingan Gigi Akhir</th>
+                            <td class="align-center">3.545 / 2.875</td>
+                          </tr><tr>
+                            <th class="align-left" style="vertical-align: middle;">Ratio Gear</th>
+                            <td class="align-center"><table align="left" border="0" cellpadding="1" cellspacing="1" style="width: 100%;">
+                              <tbody>
+                              <tr>
+                              <td>Gear</td>
+                              <td>M/T</td>
+                              <td>A/T</td>
+                              </tr>
+                              <tr>
+                              <td>1st</td>
+                              <td>3.909</td>
+                              <td>2.875</td>
+                              </tr>
+                              <tr>
+                              <td>2nd</td>
+                              <td>2.043</td>
+                              <td>1.568</td>
+                              </tr>
+                              <tr>
+                              <td>3rd</td>
+                              <td>1.407</td>
+                              <td>1.000</td>
+                              </tr>
+                              <tr>
+                              <td>4th</td>
+                              <td>1.065</td>
+                              <td>0.697</td>
+                              </tr>
+                              <tr>
+                              <td>5th</td>
+                              <td>0.769</td>
+                              <td>N.A</td>
+                              </tr>
+                              <tr>
+                              <td> </td>
+                              <td> </td>
+                              <td> </td>
+                              </tr>
+                              <tr>
+                              <td>Reverse</td>
+                              <td>3.250</td>
+                              <td>2.300</td>
+                              </tr>
+                              </tbody>
+                              </table>
+                              </td>
+                          </tr>                        </tbody></table>
                   </div>
-                </a>
-                <a href="xl7.html" class="car-list">
-                  <div class="car-list__image">
-                    <img src="assets/images/content/mobil-6.png" alt="">
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="heading4">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                      BERAT
+                      <div class="card-header--toggle">
+                        <img src="assets/images/icons/down.svg" alt="Icon">
+                      </div>
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordion">
+                  <div class="card-body">
+                    <table class="w-100">
+                      <tbody><tr>
+                            <th class="align-left">Berat Kosong</th>
+                            <td class="align-center">1.145 kg (5 MT), 1.165 kg (6 AT)</td>
+                          </tr><tr>
+                            <th class="align-left">Berat Kotor</th>
+                            <td class="align-center">1.670 kg</td>
+                          </tr>                        </tbody></table>
                   </div>
-                  <div class="car-list__info">
-                    <h4>New Carry Luxury</h4>
-                    <p>Mulai Dari</p>
-                    <h5>Rp 159.100.000</h5>
-                    <span class="tag">Lihat Detail</span>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="heading5">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                      RANGKA
+                      <div class="card-header--toggle">
+                        <img src="assets/images/icons/down.svg" alt="Icon">
+                      </div>
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapse5" class="collapse" aria-labelledby="heading5" data-parent="#accordion">
+                  <div class="card-body">
+                    <table class="w-100">
+                      <tbody><tr>
+                            <th class="align-left">Sistem Kemudi</th>
+                            <td class="align-center">Rack &amp; Pinion</td>
+                          </tr><tr>
+                            <th class="align-left">Suspensi Depan</th>
+                            <td class="align-center">McPherson Strut with Coil Spring</td>
+                          </tr><tr>
+                            <th class="align-left">Suspensi Belakang</th>
+                            <td class="align-center">Drum, leading &amp; trailing</td>
+                          </tr><tr>
+                            <th class="align-left">Rem Depan</th>
+                            <td class="align-center">Ventilated Disc</td>
+                          </tr><tr>
+                            <th class="align-left">Rem Belakang</th>
+                            <td class="align-center">Torsion Beam with Coil Spring</td>
+                          </tr><tr>
+                            <th class="align-left">Ukuran Ban</th>
+                            <td class="align-center">195/60 R16</td>
+                          </tr>                        </tbody></table>
                   </div>
-                </a>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header" id="heading6">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                      KAPASITAS
+                      <div class="card-header--toggle">
+                        <img src="assets/images/icons/down.svg" alt="Icon">
+                      </div>
+                    </button>
+                  </h5>
+                </div>
+                <div id="collapse6" class="collapse" aria-labelledby="heading6" data-parent="#accordion">
+                  <div class="card-body">
+                    <table class="w-100">
+                      <tbody><tr>
+                            <th class="align-left">Tempat Duduk</th>
+                            <td class="align-center">7 Persons</td>
+                          </tr><tr>
+                            <th class="align-left">Tangki Bahan Bakar</th>
+                            <td class="align-center">45 liters</td>
+                          </tr>                        </tbody></table>
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+      <div class="divider divider--margin-small"></div>
+      <div class="divider divider--margin-small"></div>
 
+      <section class="container-fluid title title--pd title--white" id="harga">
+				<div class="row">
+					<div class="col-12">
+            <h2>DAFTAR HARGA <br>XL 7</h2>
             <div class="divider divider--margin-small"></div>
+            <div class="car-detail-accordion">
+              <div class="card">
+                <div class="card-header">
+                  <div class="row">
+                    <div class="col-6">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link">XL7 ZETA M/T</button>
+                      </h5>
+                    </div>
+                    <div class="col-6">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link">Rp 232.000.000</button>
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <div class="row">
+                    <div class="col-6">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link">XL7 ZETA A/T</button>
+                      </h5>
+                    </div>
+                    <div class="col-6">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link">Rp 242.500.000</button>
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <div class="row">
+                    <div class="col-6">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link">XL7 BETA M/T</button>
+                      </h5>
+                    </div>
+                    <div class="col-6">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link">Rp 248.500.000</button>
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <div class="row">
+                    <div class="col-6">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link">XL7 BETA A/T</button>
+                      </h5>
+                    </div>
+                    <div class="col-6">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link">Rp 259.000.000</button>
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <div class="row">
+                    <div class="col-6">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link">XL7 ALPHA M/T</button>
+                      </h5>
+                    </div>
+                    <div class="col-6">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link">Rp 258.500.000</button>
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <div class="row">
+                    <div class="col-6">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link">XL7 ALPHA A/T</button>
+                      </h5>
+                    </div>
+                    <div class="col-6">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link">Rp 269.000.000</button>
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="divider divider--margin-small"></div>
             <div class="divider divider--margin-small"></div>
             <div class="text-center">
-							<a href="" class="button button--border button--border-primary">Lihat Semua Mobil</a>
+							<a href="" class="button button--border button--border-primary">Lihat Semua Harga Mobil</a>
 						</div>
-            <div class="divider divider--margin-small"></div>
-            <div class="divider divider--margin-small"></div>
-            <div class="divider divider--margin-small"></div>
-            <div class="divider divider--margin-small"></div>
-            <div class="divider divider--margin-small"></div>
-            <div class="divider divider--margin-small"></div>
-					</div>
-				</div>
-      </section> -->
+          </div>
+        </div>
+      </section>
+      <div class="divider divider--margin-small"></div>
+      <div class="divider divider--margin-small"></div>
 
 		</main>
 
