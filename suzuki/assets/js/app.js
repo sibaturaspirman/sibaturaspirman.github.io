@@ -30,111 +30,9 @@
       var self = this;
 
       self.header();
+      self.slider();
       self.accordion();
-      self.stickyFix();
-      self.popOver();
-      self.modal();
-      self.dropDown();
-      self.navigation();
 
-    },
-    dropDown: function () {
-      $('.header-extra__item .dropdown-menu').on('click', function (e) {
-        e.stopPropagation();
-      });
-    },
-
-    popOver: function () {
-      $(function () {
-        $('[data-toggle="popover"]').popover()
-      });
-      $('.popover-dismiss').popover({
-        trigger: 'click'
-      });
-      $('#popover-notification').popover({
-        trigger: 'click',
-        placement: 'right',
-        offset: 120,
-        html: true,
-        content: function () {
-          return $('#notification-popover-container').html();
-        },
-        template: '<div class="popover notification-popover" role="tooltip"><div class="arrow"></div><div class="popover-body"></div></div>',
-      })
-
-      $('.triggerBackdrop').click(function () {
-        $('.backdrop').toggleClass('backdrop--hide');
-        $('body').toggleClass('backdrop--body');
-      });
-
-      $('[rel=pointpvr]').popover({
-        trigger: 'hover',
-        placement: 'right',
-        html: true,
-        content: function () {
-          return $('#point-popover').html();
-        },
-        template: '<div class="popover belt-rank__popover-box"><div class="arrow"></div><div class="popover-body"></div></div>',
-      })
-      .on('shown', function () {
-        $('[rel=pointpvr]').not(this).popover('hide');
-      })
-
-      $('[rel=yellow-belt]').popover({
-          trigger: 'hover',
-          placement: 'right',
-          html: true,
-          content: function () {
-            return $('#belt-popover__container-yellow').html();
-          },
-          template: '<div class="popover belt-rank__popover-box"><div class="arrow"></div><div class="popover-body"></div></div>',
-        })
-        .on('shown', function () {
-          $('[rel=yellow-belt]').not(this).popover('hide');
-        })
-
-      $('[rel=black-belt]').popover({
-          trigger: 'hover',
-          placement: 'right',
-          html: true,
-          content: function () {
-            return $('#belt-popover__container-black').html();
-          },
-          template: '<div class="popover belt-rank__popover-box"><div class="arrow"></div><div class="popover-body"></div></div>',
-        })
-        .on('shown', function () {
-          $('[rel=black-belt]').not(this).popover('hide');
-        })
-
-      $('[rel=green-belt]').popover({
-          trigger: 'hover',
-          placement: 'right',
-          html: true,
-          content: function () {
-            return $('#belt-popover__container-green').html();
-          },
-          template: '<div class="popover belt-rank__popover-box"><div class="arrow"></div><div class="popover-body"></div></div>',
-        })
-        .on('shown', function () {
-          $('[rel=green-belt]').not(this).popover('hide');
-        })
-
-      $('[rel=info-doubtful]').popover({
-          trigger: 'hover',
-          offset: '70',
-          html: true,
-          content: function () {
-            return $('.info-doubtful__popover').html();
-          },
-          template: '<div class="popover question__popover-box"><div class="arrow"></div><div class="popover-body"></div></div>',
-        })
-        .on('shown', function () {
-          $('[rel=info-doubtful]').not(this).popover('hide');
-        })
-    },
-
-    stickyFix: function () {
-      var stickySidebar = new Sticky('.stickySidebar');
     },
 
     accordion: function () {
@@ -192,39 +90,6 @@
 
     },
 
-    modal: function () {
-      $('.btn__operator').on('click', function () {
-        let $button = $(this);
-        let oldValue = $button.parent().parent().find('input').val();
-        let newValue = 0;
-
-        if ($button.val() == '+') {
-          newValue = parseFloat(oldValue) + 1;
-        } else {
-          // Don't allow decrementing below zero
-          if (oldValue > 0) {
-            newValue = parseFloat(oldValue) - 1;
-          } else {
-            newValue = 0;
-          }
-        }
-        $button.parent().parent().find('input').val(newValue);
-      });
-    },
-
-    navigation: function () {
-      $(function () {
-        var current = location.pathname;
-        $('.menu a').each(function () {
-          var $this = $(this);
-          // if the current path is like this link, make it active
-          if ($this.attr('href').indexOf(current) !== -1) {
-            $this.addClass('active');
-          }
-        })
-      });
-    },
-
     header: function () {
       $('#triggerMenuBurger').click(function () {
         $('.menu').toggleClass('menu--active');
@@ -241,6 +106,19 @@
       // if (window.matchMedia('(max-width: 1024px)').matches) {
       //   $('.header').toggleClass('header--scroll');
       // }
+    },
+
+    slider: function () {
+      var swiper = new Swiper('#hero', {
+        pagination: {
+          el: '#hero .swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '#hero .swiper-button-next',
+          prevEl: '#hero .swiper-button-prev',
+        },
+      });
     }
   };
 

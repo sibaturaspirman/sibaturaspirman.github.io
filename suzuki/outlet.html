@@ -132,7 +132,7 @@
 		<div class="preloader" id="loading">
 			<div class="preloader__content">
 				<img src="assets/images/logo.png" alt="Suzuki" />
-				Mohon tunggu, sedang memuat konten..
+				Mohon tunggu, <br> sedang memuat konten..
 			</div>
 		</div>
 		<div class="backdrop backdrop--hide" id="backdrop">&nbsp;</div>
@@ -186,43 +186,182 @@
 			</p>
 		</div>
 		
+		<div class="floating">
+		  <div class="floating__wrapper">
+		    <a href="#">
+		      <img src="assets/images/icons/wa.svg" alt="">
+		      <span>WhatsApp</span>
+		    </a>
+		    <a href="#">
+		      <img src="assets/images/icons/dh.svg" alt="">
+		      <span>Daftar Harga</span>
+		    </a>
+		    <a href="#">
+		      <img src="assets/images/icons/ps.svg" alt="">
+		      <span>Pesan Servis</span>
+		    </a>
+		    <a href="#">
+		      <img src="assets/images/icons/sk.svg" alt="">
+		      <span>Simulasi Kredit</span>
+		    </a>
+		  </div>
+		</div>
+		
 
 		<main class="main">
-			<section class="container-fluid title">
+      <section class="hero">
+        <div class="swiper-container" id="hero">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <a href="">
+                <img src="assets/images/content/banner-1.png" alt="">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="">
+                <img src="assets/images/content/banner-1.png" alt="">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="">
+                <img src="assets/images/content/banner-1.png" alt="">
+              </a>
+            </div>
+            <div class="swiper-slide">
+              <a href="">
+                <img src="assets/images/content/banner-1.png" alt="">
+              </a>
+            </div>
+          </div>
+          <div class="swiper-button-next">
+            <img src="assets/images/icons/ar.svg" alt="">
+          </div>
+          <div class="swiper-button-prev">
+            <img src="assets/images/icons/al.svg" alt="">
+          </div>
+          <div class="hero-pagination">
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+      </section>
+
+			<section class="container-fluid title title--npb">
 				<div class="row">
 					<div class="col-12">
-						<h1>Temukan Mobil Suzuki yang tepat untuk Anda</h1>
-						<div class="divider"></div><div class="divider"></div><div class="divider"></div>
+            <h1>Temukan Mobil Suzuki yang tepat untuk Anda</h1>
 					</div>
 				</div>
+        <div class="divider divider--margin-small"></div>
+        <div class="divider divider--margin-small"></div>
+        <div class="divider divider--margin-small"></div>
+        <ul class="nav nav-tabs tabs" id="tab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="tab1-tab" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="true">Passenger Car</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="tab2-tab" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">Commercial Car</a>
+          </li>
+        </ul>
 			</section>
-			<section class="container-fluid list">
+			<section class="container-fluid" style="background-color: #fff;">
 				<div class="row">
 					<div class="col-12">
-						<a href="outlet.html" class="outlet">
-							<div class="outlet__image">
-								<div class="inner" style="background-image: url(assets/images/content/outlet-1.png);"></div>
-							</div>
-							<div class="outlet__info">
-								<div class="tag">Sales, Service, Sparepart, Body Paint</div>
-								<h4>SUZUKI NJS SOEKARNO - HATTA</h4>
-								<div class="outlet__icon">
-									<span><img src="assets/images/icons/call.svg" alt=""></span>
-									<span>(022) 6204645</span>
-								</div>
-								<div class="outlet__icon">
-									<span><img src="assets/images/icons/pin.svg" alt=""></span>
-									<span>JL. Soekarno Hatta No. 289 Bandung 40234</span>
-								</div>
-								<div class="divider divider--margin-small"></div>
-								<div class="divider divider--margin-small"></div>
-								<div class="button button--border button--border-primary">Kunjungi Website Outlet</div>
-							</div>
-						</a>
+            <div class="tab-content" id="tabContent">
+              <div class="tab-pane fade show active" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+                <a href="xl7.html" class="car-list">
+                  <div class="car-list__image">
+                    <img src="assets/images/content/mobil-1.png" alt="">
+                  </div>
+                  <div class="car-list__info">
+                    <h4>XL 7</h4>
+                    <p>Mulai Dari</p>
+                    <h5>Rp 232.000.000</h5>
+                    <span class="tag">Lihat Detail</span>
+                  </div>
+                </a>
+                <a href="xl7.html" class="car-list">
+                  <div class="car-list__image">
+                    <img src="assets/images/content/mobil-2.png" alt="">
+                  </div>
+                  <div class="car-list__info">
+                    <h4>All New Ertiga</h4>
+                    <p>Mulai Dari</p>
+                    <h5>Rp 207.000.000</h5>
+                    <span class="tag">Lihat Detail</span>
+                  </div>
+                </a>
+                <a href="xl7.html" class="car-list">
+                  <div class="car-list__image">
+                    <img src="assets/images/content/mobil-3.png" alt="">
+                  </div>
+                  <div class="car-list__info">
+                    <h4>All New Ertiga Suzuki Sport</h4>
+                    <p>Mulai Dari</p>
+                    <h5>Rp 252.000.000</h5>
+                    <span class="tag">Lihat Detail</span>
+                  </div>
+                </a>
+                <a href="xl7.html" class="car-list">
+                  <div class="car-list__image">
+                    <img src="assets/images/content/mobil-4.png" alt="">
+                  </div>
+                  <div class="car-list__info">
+                    <h4>New Ignis</h4>
+                    <p>Mulai Dari</p>
+                    <h5>Rp 171.000.000</h5>
+                    <span class="tag">Lihat Detail</span>
+                  </div>
+                </a>
+              </div>
+              <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+                <a href="xl7.html" class="car-list">
+                  <div class="car-list__image">
+                    <img src="assets/images/content/mobil-5.png" alt="">
+                  </div>
+                  <div class="car-list__info">
+                    <h4>New Carry Pick-Up</h4>
+                    <p>Mulai Dari</p>
+                    <h5>Rp 145.600.000</h5>
+                    <span class="tag">Lihat Detail</span>
+                  </div>
+                </a>
+                <a href="xl7.html" class="car-list">
+                  <div class="car-list__image">
+                    <img src="assets/images/content/mobil-6.png" alt="">
+                  </div>
+                  <div class="car-list__info">
+                    <h4>New Carry Luxury</h4>
+                    <p>Mulai Dari</p>
+                    <h5>Rp 159.100.000</h5>
+                    <span class="tag">Lihat Detail</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="divider divider--margin-small"></div>
+            <div class="divider divider--margin-small"></div>
+            <div class="divider divider--margin-small"></div>
+            <div class="text-center">
+							<a href="" class="button button--border button--border-primary">Lihat Semua Mobil</a>
+						</div>
+            <div class="divider divider--margin-small"></div>
+            <div class="divider divider--margin-small"></div>
+            <div class="divider divider--margin-small"></div>
+            <div class="divider divider--margin-small"></div>
+            <div class="divider divider--margin-small"></div>
+            <div class="divider divider--margin-small"></div>
 					</div>
 				</div>
-			</section>
-			<div class="divider"></div>
+      </section>
+      
+      <a href="" class="banner">
+        <img src="assets/images/content/pesan-servis.png" alt="">
+      </a>
+      <a href="" class="banner">
+        <img src="assets/images/content/sukucadang.png" alt="">
+      </a>
+
 		</main>
 
 		<footer class="container-fluid footer">
