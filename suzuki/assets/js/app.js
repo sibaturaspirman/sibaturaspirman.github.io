@@ -95,6 +95,7 @@
         $('.menu').toggleClass('menu--active');
         $('.menu-list').toggleClass('menu-list--show');
         $('.header').toggleClass('header--hide');
+        $('.breadcumb').toggleClass('breadcumb--hide');
         $('.main').toggleClass('main--hide');
         $('.backdrop').toggleClass('backdrop--hide');
 
