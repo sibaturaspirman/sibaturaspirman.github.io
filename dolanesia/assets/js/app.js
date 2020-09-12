@@ -65,6 +65,7 @@
     },
 
     swiperSlider: function () {
+      //HERO
       var menuHero = ['Eagle Rock, Wayag – Raja Ampat Island', 'Mount Bromo - East Java', 'Situ Bagendit - Bandung']
       var swiperHero = new Swiper('#hero .swiper-container', {
         slidesPerView: 1,
@@ -107,6 +108,52 @@
         }
       });
       // swiperHero.autoplay.stop();
+
+      //SLIDER GROUP
+      var sliderGroup = new Swiper('.slider-populardestination', {
+        slidesPerView: 2,
+        slidesPerColumn: 2,
+        spaceBetween: 20,
+        navigation: {
+          nextEl: '#sliderPopularDestination .swiper-button-next',
+          prevEl: '#sliderPopularDestination .swiper-button-prev',
+        },
+        breakpoints: {
+          320: {
+            slidesPerView: 'auto',
+            slidesPerColumn: 0,
+            spaceBetween: 15,
+          },
+          768: {
+            slidesPerView: 3,
+            slidesPerColumn: 0,
+            spaceBetween: 15,
+          },
+          1025: {
+            slidesPerView: 2,
+          },
+        }
+      });
+
+      //GALLERY
+      var sliderGalleryThumbs = new Swiper('.slider-gallery-thumbs', {
+        spaceBetween: 10,
+        slidesPerView: 4,
+        freeMode: true,
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true,
+      });
+      var sliderGalleryTop = new Swiper('.slider-gallery-top', {
+        spaceBetween: 10,
+        thumbs: {
+          swiper: sliderGalleryThumbs
+        },
+        breakpoints: {
+          320: {
+            slidesPerView: 'auto',
+          },
+        }
+      });
     }
   };
 
