@@ -139,12 +139,14 @@
       var sliderGalleryThumbs = new Swiper('.slider-gallery-thumbs', {
         spaceBetween: 10,
         slidesPerView: 4,
-        freeMode: true,
-        watchSlidesVisibility: true,
-        watchSlidesProgress: true,
+        freeMode: false,
       });
       var sliderGalleryTop = new Swiper('.slider-gallery-top', {
         spaceBetween: 10,
+        navigation: {
+          nextEl: '.slider-gallery-top .swiper-button-next',
+          prevEl: '.slider-gallery-top .swiper-button-prev',
+        },
         thumbs: {
           swiper: sliderGalleryThumbs
         },
@@ -153,6 +155,36 @@
             slidesPerView: 'auto',
           },
         }
+      });
+
+      //INSTAGRAM
+      var slideInstagram = new Swiper('.slider-instagram .swiper-container', {
+        spaceBetween: 15,
+        slidesPerView: 5,
+        navigation: {
+          nextEl: '.slider-instagram .swiper-button-next',
+          prevEl: '.slider-instagram .swiper-button-prev',
+        },
+        breakpoints: {
+          320: {
+            slidesPerView: 'auto',
+          },
+          768: {
+            slidesPerView: 4,
+          },
+          1025: {
+            slidesPerView: 5,
+          },
+        }
+      });
+
+      //EBOOK
+      var slideEbook = new Swiper('.slider-ebook.swiper-container', {
+        spaceBetween: 0,
+        slidesPerView: 1,
+        pagination: {
+          el: '.slider-ebook .swiper-pagination',
+        },
       });
     }
   };
