@@ -39,6 +39,10 @@
       $('#headerActionMenu').click(function () {
         $('.header-action__burger').toggleClass('header-action__burger--active');
       });
+      $('#headerActionMenuBurger').click(function () {
+        $('.menu-burger').toggleClass('menu-burger--active');
+      });
+      
 
       //when scroll
       let scrollpos = window.scrollY
