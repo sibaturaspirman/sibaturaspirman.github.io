@@ -6,7 +6,7 @@
 $color--black: #640A09;
 
 body{
-  margin:0;padding:0;background:#ccc;
+  margin:0;padding:0;background:#E10101;
   font-family: $body--text__font;
   color: $color--black;
 }
@@ -72,7 +72,7 @@ img{
   }
   &-content{
     position: relative;
-    max-width: 425px;
+    max-width: 350px;
     width: 90%;
     &:before {
       display: block;

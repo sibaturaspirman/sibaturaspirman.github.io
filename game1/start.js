@@ -20,6 +20,7 @@ var caraNextStart = document.getElementById("caraNextStart");
 var caraNextEnd = document.getElementById("caraNextEnd");
 
 var swiper = new Swiper('#sliderHowToPlay .swiper-container', {
+	slidesPerView: 1,
 	pagination: {
 		el: '#sliderHowToPlay .swiper-pagination',
 	},

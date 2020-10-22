@@ -4,7 +4,7 @@ EPT.Boot = function(game) {}
 EPT.Boot.prototype = {
     preload: function() {
         this.stage.backgroundColor = '#E10101';
-        this.load.image('bg1', 'img/bg1.jpg');
+        this.load.image('bg1', 'img/bg1.png');
         this.load.image('loading-background', 'img/loading-background.png');
         this.load.image('loading-progress', 'img/loading-progress.png')
     },
@@ -30,6 +30,10 @@ EPT.Preloader.prototype = {
             custom: {
                 families: ['Nunito'],
                 urls: ['fonts/Nunito/stylesheet.css']
+            },
+            custom2: {
+                families: ['Luckiest Guy'],
+                urls: ['fonts/LuckiestGuy/stylesheet.css']
             }
         });
         this._preloadResources()
@@ -48,9 +52,9 @@ EPT.Preloader.prototype = {
     }
 };
 EPT.Preloader.resources = {
-    'image': [['bg1', 'img/bg1.jpg'], ['bg2', 'img/bg2.jpg'], ['bg3', 'img/bg3.jpg'], ['bucket', 'img/bucket.png'], ['overlay', 'img/overlay.png'], ['homescreen', 'img/homescreen.png'], ['wing', 'img/wing.png'], ['shadow', 'img/shadow.png'], ['logo', 'img/logo-k.png'], ['particle', 'img/particle.png'], ['button-start', 'img/button-main.png'], ['button-restart', 'img/button-restart.png'], ['button-exit', 'img/button-exit.png'], ['button-howtoplay', 'img/button-howtoplay.png']],
+    'image': [['bg1', 'img/bg1.png'], ['bg2', 'img/bg2.png'], ['bg3', 'img/bg3.png'], ['bucket', 'img/bucket.png'], ['overlay', 'img/overlay.png'], ['homescreen', 'img/homescreen.png'], ['wing', 'img/item-1.png'], ['shadow', 'img/shadow.png'], ['logo', 'img/logo-k.png'], ['logo-homescreen', 'img/logo-homescreen.png'], ['particle', 'img/particle.png'], ['button-start', 'img/button-main.png'], ['button-restart', 'img/button-restart.png'], ['button-exit', 'img/button-exit.png'], ['button-howtoplay', 'img/button-howtoplay.png']],
     'spritesheet': [],
-    'audio': []
+    'audio': [['bgm1', 'audio/bgm1.mp3'], ['bgm2', 'audio/bgm2.mp3'], ['bgm3', 'audio/bgm3.mp3'], ['berhasil', 'audio/berhasil.mp3'], ['gameover', 'audio/gameover.mp3'], ['swing', 'audio/swing.mp3']]
 };
 EPT.Game = function(game) {
     _restarting: false
@@ -58,6 +62,19 @@ EPT.Game = function(game) {
 ;
 EPT.Game.prototype = {
     create: function() {
+        this.bgm1 = this.add.audio('bgm1');
+        this.bgm1.volume = 0.15;
+        this.bgm2 = this.add.audio('bgm2');
+        this.bgm2.volume = 0.15;
+        this.bgm3 = this.add.audio('bgm3');
+        this.bgm3.volume = 0.15;
+        this.berhasil = this.add.audio('berhasil');
+        this.berhasil.volume = 0.3;
+        this.gameover = this.add.audio('gameover');
+        this.gameover.volume = 0.3;
+        this.swing = this.add.audio('swing');
+        this.swing.volume = 0.3;
+
         this.bg1 = this.add.sprite(0, 0, 'bg1');
         this.bg2 = this.add.sprite(0, 0, 'bg2');
         this.bg3 = this.add.sprite(0, 0, 'bg3');
@@ -106,15 +123,23 @@ EPT.Game.prototype = {
             x: 0,
             y: 0
         }, 200, Phaser.Easing.Linear.None, true);
-        this.stateStatus = 'playing'
+        this.add.tween(this.logoHomeScreen.scale).to({
+            x: 0,
+            y: 0
+        }, 200, Phaser.Easing.Linear.None, true);
+        
+        this.stateStatus = 'playing';
+
+        this.bgm1.play();
     },
     pointerDown: function() {
         this.startX = this.input.x;
-        this.startY = this.input.y
+        this.startY = this.input.y;
     },
     pointerUp: function() {
         if (this.stateStatus == 'playing' && !this._flying) {
-            this.swipeDone()
+            this.swipeDone();
+            this.swing.play();
         }
     },
     swipeDone: function() {
@@ -130,13 +155,16 @@ EPT.Game.prototype = {
         this.wing.body.velocity.x = lengthX * 2 * 2;
         this.wing.body.velocity.y = (-750 + lengthY) * 2;
         console.log('this.wing.body.velocity.y: ' + this.wing.body.velocity.y);
-        this._flying = true
+        this._flying = true;
     },
     hit: function(bucket, wing) {
         this._scoreTime++;
         this._score = this._scoreTime * 10;
         this._flying = false;
         this.textScore.setText(this._score);
+
+        this.berhasil.play();
+
         if (this._score == 100) {
             this.camera.fade(0x000000, 500, false);
             this.camera.onFadeComplete.add(function() {
@@ -144,7 +172,11 @@ EPT.Game.prototype = {
                 this.bg2.alpha = 1;
                 this.bg3.alpha = 0;
                 this.camera.flash(0x000000, 500, false)
-            }, this)
+            }, this);
+
+
+            this.bgm1.stop();
+            this.bgm2.play();
         } else if (this._score == 200) {
             this.camera.fade(0x000000, 500, false);
             this.camera.onFadeComplete.add(function() {
@@ -152,7 +184,10 @@ EPT.Game.prototype = {
                 this.bg2.alpha = 0;
                 this.bg3.alpha = 1;
                 this.camera.flash(0x000000, 500, false)
-            }, this)
+            }, this);
+
+            this.bgm2.stop();
+            this.bgm3.play();
         }
         if (this._score >= 200) {
             var mod = this._score % 10;
@@ -189,7 +224,7 @@ EPT.Game.prototype = {
         this.wing.body.gravity.y = 0;
         this.wing.body.velocity.x = 0;
         this.wing.body.velocity.y = 0;
-        var messages = ['nice', 'good', 'great', 'awesome'];
+        var messages = ['mantap!', 'ayee!', 'sekut!', 'wadidaw!'];
         var rand = this.rnd.integerInRange(0, 3);
         this.showMessage(messages[rand] + '!');
         this.wing.scale.x = 0.5;
@@ -201,7 +236,7 @@ EPT.Game.prototype = {
     },
     showMessage: function(currentMessage) {
         var myMessage = game.add.text(game.world.width * 0.5, game.camera.y + 180, '' + currentMessage, {
-            font: "56px Nunito",
+            font: "56px Luckiest Guy",
             fill: "#FFF",
             align: "center"
         });
@@ -230,7 +265,7 @@ EPT.Game.prototype = {
         this.textScore = this.add.text(this.world.centerX, 110, this._score, fontScoreBig);
         this.textScore.anchor.set(0.5);
         var fontTitle = {
-            font: "64px Nunito",
+            font: "64px Luckiest Guy",
             fill: "#FFF"
         };
         var fontTitleWhite = {
@@ -238,8 +273,12 @@ EPT.Game.prototype = {
             fill: "#FFF",
             align: "center"
         };
+
+
         this.overlay = this.add.sprite(0, 0, 'homescreen');
         this.overlay.alpha = 1;
+        this.logoHomeScreen = this.add.sprite(this.world.centerX, 150, 'logo-homescreen');
+        this.logoHomeScreen.anchor.set(0.5);
         this.buttonStart = this.add.button(this.world.centerX, this.world.height - 230, 'button-start', this.clickStart, this);
         this.buttonStart.anchor.set(0.5);
         this.buttonHowtoplay = this.add.button(this.world.centerX, this.world.height - 125, 'button-howtoplay', this.stateHowToPlay, this);
@@ -249,15 +288,15 @@ EPT.Game.prototype = {
         this.screenGameoverBg.alpha = 0.75;
         this.screenGameoverLogo = this.add.sprite(this.world.centerX, 150, 'logo');
         this.screenGameoverLogo.anchor.set(0.5);
-        this.screenGameoverText = this.add.text(this.world.centerX, 280, 'Game over', fontTitle);
+        this.screenGameoverText = this.add.text(this.world.centerX, 280, 'Game Selesai', fontTitle);
         this.screenGameoverText.anchor.set(0.5, 0);
         this.screenGameoverScoreText = this.add.text(this.world.centerX, this.world.centerY - 30, 'Score', fontScoreWhite);
         this.screenGameoverScoreText.anchor.set(0.5, 0.5);
         this.screenGameoverScore = this.add.text(this.world.centerX, this.world.centerY + 30, this._score, fontTitleWhite);
         this.screenGameoverScore.anchor.set(0.5, 0.5);
-        this.screenGameoverRestart = this.add.button(this.world.centerX, this.world.height - 270, 'button-restart', this.stateRestart, this);
+        this.screenGameoverRestart = this.add.button(this.world.centerX, this.world.height - 230, 'button-restart', this.stateRestart, this);
         this.screenGameoverRestart.anchor.set(0.5);
-        this.screenGameoverBack = this.add.button(this.world.centerX, this.world.height - 100, 'button-exit', this.stateBack, this);
+        this.screenGameoverBack = this.add.button(this.world.centerX, this.world.height - 125, 'button-exit', this.stateBack, this);
         this.screenGameoverBack.anchor.set(0.5);
         this.screenGameoverGroup.add(this.screenGameoverBg);
         this.screenGameoverGroup.add(this.screenGameoverLogo);
@@ -274,7 +313,12 @@ EPT.Game.prototype = {
             {
                 if (!this.runOnce) {
                     this.stateGameover();
-                    this.runOnce = true
+                    this.runOnce = true;
+                    this.bgm1.stop();
+                    this.bgm2.stop();
+                    this.bgm3.stop();
+                    this.berhasil.stop();
+                    this.swing.stop();
                 }
                 break
             }
@@ -285,6 +329,15 @@ EPT.Game.prototype = {
         default:
             {}
         }
+
+        //AUDIO
+        // if (this._score <= 100) {
+        //     this.bgm1.play();
+        // }else if (this._score <= 200) {
+        //     this.bgm2.play();
+        // }else if (this._score > 200) {}{
+        //     this.bgm3.play();
+        // }
     },
     statePlaying: function() {
         if (this._score >= 200) {
@@ -298,7 +351,7 @@ EPT.Game.prototype = {
             this.stateStatus = 'gameover'
         }
         if (this.wing.body.velocity.y > 0) {
-            this.physics.arcade.overlap(this.bucket, this.wing, this.hit, null, this)
+            this.physics.arcade.overlap(this.bucket, this.wing, this.hit, null, this);
         }
     },
     statePaused: function() {},
@@ -327,7 +380,8 @@ EPT.Game.prototype = {
             x: 1,
             y: 1
         }, 750, Phaser.Easing.Exponential.Out, true);
-        this.gameoverScoreTween()
+        this.gameoverScoreTween();
+        this.gameover.play();
     },
     gameoverScoreTween: function() {
         this.screenGameoverScore.setText('0');
@@ -374,6 +428,7 @@ EPT.Game.prototype = {
         this.gamePaused = false;
         this.runOnce = false;
         this._restarting = true;
+        this.stateStatus = 'paused';
 
         this.add.tween(this.overlay).to({
             alpha: 1
@@ -386,7 +441,6 @@ EPT.Game.prototype = {
             x: 1,
             y: 1
         }, 200, Phaser.Easing.Linear.None, true);
-        this.stateStatus = 'paused';
     },
     stateHowToPlay: function() {
         howToPlay();
