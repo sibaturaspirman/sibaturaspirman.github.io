@@ -3,7 +3,7 @@ EPT.Boot = function(game) {}
 ;
 EPT.Boot.prototype = {
     preload: function() {
-        this.stage.backgroundColor = '#000';
+        this.stage.backgroundColor = '#E10101';
         this.load.image('bg1', 'img/bg1.jpg');
         this.load.image('loading-background', 'img/loading-background.png');
         this.load.image('loading-progress', 'img/loading-progress.png')
@@ -367,13 +367,29 @@ EPT.Game.prototype = {
         this.runOnce = false;
         this._restarting = true;
         this.stateStatus = 'paused';
-        this.state.restart(true)
+        this.state.restart(true);
     },
     stateBack: function() {
-        exitTheGame()
+        this.screenGameoverGroup.visible = false;
+        this.gamePaused = false;
+        this.runOnce = false;
+        this._restarting = true;
+
+        this.add.tween(this.overlay).to({
+            alpha: 1
+        }, 200, Phaser.Easing.Linear.None, true);
+        this.add.tween(this.buttonStart.scale).to({
+            x: 1,
+            y: 1
+        }, 200, Phaser.Easing.Linear.None, true);
+        this.add.tween(this.buttonHowtoplay.scale).to({
+            x: 1,
+            y: 1
+        }, 200, Phaser.Easing.Linear.None, true);
+        this.stateStatus = 'paused';
     },
     stateHowToPlay: function() {
-        howToPlay()
+        howToPlay();
     },
     render: function() {}
 };
