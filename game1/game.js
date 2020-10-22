@@ -363,7 +363,7 @@ EPT.Game.prototype = {
     statePlaying: function() {
         if (this._score >= 200) {
             this.bucket.x += this._delta;
-            this.shadow.x += this._delta
+            // this.shadow.x += this._delta
         }
         if (this.bucket.x >= this.world.width - 87 || this.bucket.x <= 87) {
             this._delta = -this._delta
