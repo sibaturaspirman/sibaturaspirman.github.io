@@ -52,9 +52,11 @@ EPT.Preloader.prototype = {
     }
 };
 EPT.Preloader.resources = {
-    'image': [['bg1', 'img/bg1.png'], ['bg2', 'img/bg2.png'], ['bg3', 'img/bg3.png'], ['bucket', 'img/bucket.png'], ['overlay', 'img/overlay.png'], ['homescreen', 'img/homescreen.png'], ['wing', 'img/item-1.png'], ['shadow', 'img/shadow.png'], ['logo', 'img/logo-k.png'], ['logo-homescreen', 'img/logo-homescreen.png'], ['particle', 'img/particle.png'], ['button-start', 'img/button-main.png'], ['button-restart', 'img/button-restart.png'], ['button-exit', 'img/button-exit.png'], ['button-howtoplay', 'img/button-howtoplay.png']],
+    'image': [['bg1', 'img/bg1.png'], ['bg2', 'img/bg2.png'], ['bg3', 'img/bg3.png'], ['bucket', 'img/bucket.png'], ['overlay', 'img/overlay.png'], ['homescreen', 'img/homescreen.png'], ['wing', 'img/item-1.png'], 
+    ['item1', 'img/item-1.png'], ['item2', 'img/item-2.png'],
+    ['shadow', 'img/shadow.png'], ['logo', 'img/logo-k.png'], ['logo-homescreen', 'img/logo-homescreen.png'], ['particle', 'img/particle.png'], ['button-start', 'img/button-main.png'], ['button-restart', 'img/button-restart.png'], ['button-exit', 'img/button-exit.png'], ['button-howtoplay', 'img/button-howtoplay.png']],
     'spritesheet': [],
-    'audio': [['bgm1', 'audio/bgm1.mp3'], ['bgm2', 'audio/bgm2.mp3'], ['bgm3', 'audio/bgm3.mp3'], ['berhasil', 'audio/berhasil.mp3'], ['gameover', 'audio/gameover.mp3'], ['swing', 'audio/swing.mp3']]
+    'audio': [['bgm1', 'audio/bgm1.mp3'], ['bgm2', 'audio/bgm1.mp3'], ['bgm3', 'audio/bgm1.mp3'], ['berhasil', 'audio/berhasil.mp3'], ['gameover', 'audio/gameover.mp3'], ['swing', 'audio/swing.mp3']]
 };
 EPT.Game = function(game) {
     _restarting: false
@@ -94,11 +96,13 @@ EPT.Game.prototype = {
         this.physics.enable(this.bucket, Phaser.Physics.ARCADE);
         this.bucket.body.setSize(125, 25, 25, 10);
         this.bucket.body.immovable = true;
-        this.wing = this.add.sprite(this.world.centerX, this.world.height - 100, 'wing');
+
+        var items = ['item1', 'item2'];
+        this.wing = this.add.sprite(this.world.centerX, this.world.height - 100, items[1]);
         this.wing.anchor.set(0.5);
         this.physics.enable(this.wing, Phaser.Physics.ARCADE);
         this.wing.body.setSize(56, 98, 20, 20);
-        this.wingImg = this.add.sprite(0, 0, 'wing');
+        this.wingImg = this.add.sprite(0, 0, 'item2');
         this.wingImg.alpha = 0;
         this.wingImg.anchor.set(0.5);
         this.input.onUp.add(this.pointerUp, this);
@@ -227,6 +231,12 @@ EPT.Game.prototype = {
         var messages = ['mantap!', 'ayee!', 'sekut!', 'wadidaw!'];
         var rand = this.rnd.integerInRange(0, 3);
         this.showMessage(messages[rand] + '!');
+
+        // var items = ['item1', 'item2'];
+        // var randItems = this.rnd.integerInRange(0, 2);
+
+        // this.wing = this.add.sprite(this.world.centerX, this.world.height - 100, items[0]);
+
         this.wing.scale.x = 0.5;
         this.wing.scale.y = 0.5;
         this.add.tween(this.wing.scale).to({
