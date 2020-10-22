@@ -98,7 +98,7 @@ EPT.Game.prototype = {
         this.bucket.body.immovable = true;
 
         var items = ['item1', 'item2'];
-        this.wing = this.add.sprite(this.world.centerX, this.world.height - 100, items[1]);
+        this.wing = this.add.sprite(this.world.centerX, this.world.height - 100, items[0]);
         this.wing.anchor.set(0.5);
         this.physics.enable(this.wing, Phaser.Physics.ARCADE);
         this.wing.body.setSize(56, 98, 20, 20);
