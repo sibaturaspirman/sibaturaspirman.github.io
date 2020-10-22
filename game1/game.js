@@ -56,7 +56,7 @@ EPT.Preloader.resources = {
     ['item1', 'img/item-1.png'], ['item2', 'img/item-2.png'],
     ['shadow', 'img/shadow.png'], ['logo', 'img/logo-k.png'], ['logo-homescreen', 'img/logo-homescreen.png'], ['particle', 'img/particle.png'], ['button-start', 'img/button-main.png'], ['button-restart', 'img/button-restart.png'], ['button-exit', 'img/button-exit.png'], ['button-howtoplay', 'img/button-howtoplay.png']],
     'spritesheet': [],
-    'audio': [['bgm1', 'audio/bgm1.mp3'], ['bgm2', 'audio/bgm1.mp3'], ['bgm3', 'audio/bgm1.mp3'], ['berhasil', 'audio/berhasil.mp3'], ['gameover', 'audio/gameover.mp3'], ['swing', 'audio/swing.mp3']]
+    'audio': [['bgm1', 'audio/bgm1.mp3'], ['bgm2', 'audio/bgm2.mp3'], ['bgm3', 'audio/bgm3.mp3'], ['berhasil', 'audio/berhasil.mp3'], ['gameover', 'audio/gameover.mp3'], ['swing', 'audio/swing.mp3']]
 };
 EPT.Game = function(game) {
     _restarting: false
@@ -90,19 +90,21 @@ EPT.Game.prototype = {
         this._delta = 1;
         this._flying = false;
         this.physics.startSystem(Phaser.Physics.ARCADE);
-        this.shadow = this.add.sprite(this.world.centerX - 130, this.world.centerY + 60, 'shadow');
-        this.bucket = this.add.sprite(this.world.centerX, this.world.centerY, 'bucket');
+        // this.shadow = this.add.sprite(this.world.centerX - 130, this.world.centerY + 60, 'shadow');
+        this.bucket = this.add.sprite(this.world.centerX, this.world.centerY + 50, 'bucket');
         this.bucket.anchor.set(0.5);
         this.physics.enable(this.bucket, Phaser.Physics.ARCADE);
         this.bucket.body.setSize(125, 25, 25, 10);
         this.bucket.body.immovable = true;
 
-        var items = ['item1', 'item2'];
-        this.wing = this.add.sprite(this.world.centerX, this.world.height - 100, items[0]);
+        this.items = ['item1', 'item2'];
+        this.randomItems = 0;
+        
+        this.wing = this.add.sprite(this.world.centerX, this.world.height - 100, this.items[this.randomItems]);
         this.wing.anchor.set(0.5);
         this.physics.enable(this.wing, Phaser.Physics.ARCADE);
         this.wing.body.setSize(56, 98, 20, 20);
-        this.wingImg = this.add.sprite(0, 0, items[0]);
+        this.wingImg = this.add.sprite(0, 0,  this.items[this.randomItems]);
         this.wingImg.alpha = 0;
         this.wingImg.anchor.set(0.5);
         this.input.onUp.add(this.pointerUp, this);
@@ -231,6 +233,12 @@ EPT.Game.prototype = {
         var messages = ['mantap!', 'ayee!', 'sekut!', 'wadidaw!'];
         var rand = this.rnd.integerInRange(0, 3);
         this.showMessage(messages[rand] + '!');
+
+
+        var randX = this.rnd.integerInRange(0, 1);
+        this._randomItems = randX;
+
+        console.log(this._randomItems);
 
         // var items = ['item1', 'item2'];
         // var randItems = this.rnd.integerInRange(0, 2);
