@@ -164,6 +164,11 @@ EPT.Game.prototype = {
         if (lengthY > -100) {
             lengthY = -100
         }
+
+        this.add.tween(this.wing).to({
+            angle: 360
+        }, 600, Phaser.Easing.Linear.None, true);
+
         this.wing.body.gravity.y = 4000;
         this.wing.body.velocity.x = lengthX * 2 * 2;
         this.wing.body.velocity.y = (-750 + lengthY) * 2;
@@ -236,6 +241,11 @@ EPT.Game.prototype = {
         } else {
             this.wing.x = this.world.centerX
         }
+
+        // this.add.tween(this.wing).to({
+        //     angle: -360
+        // }, 50, Phaser.Easing.Linear.None, true);
+        this.wing.angle = 0;
         this.wing.y = this.world.height - 100;
         this.wing.body.gravity.y = 0;
         this.wing.body.velocity.x = 0;
