@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>AYO SRC GAME 1</title>
+	<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+	<meta name="description" content="AYO SRC GAME 1" />
+	<link rel="stylesheet" href="css/styles.css">
+	<script src="phaser.js"></script>
+	<script src="game.js"></script>
+</head>
+<body>
+	<div class="backdrop backdrop--hide" id="backdrop"></div>
+	<div class="modal modal--hide" id="modal">
+		<div class="modal-content" id="sliderHowToPlay">
+			<div class="modal-close" onclick="closeModal()"><img src="./img/Close.svg" alt="X"></div>
+			<div class="inner">
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<h2>Masukan Belanjaan ke Kantong</h2>
+							<p>Perhatikan posisi barang dan tentukan arah melempar.</p>
+						</div>
+						<div class="swiper-slide">
+							<h2>Koin</h2>
+							<p>Setiap kamu berhasil memasukan barang ke kantong, kamu akan mendapatkan <strong>10 koin</strong></p>
+						</div>
+						<div class="swiper-slide">
+							<h2>Mulai Sekarang</h2>
+							<p>Masukan barang sebanyak-banyaknya ke dalam kantong dan kumpulkan kepingnya!</p>
+						</div>
+					</div>
+				</div>
+
+				<div class="button-caranext">
+					<div class="show" onclick="nextSlide();" id="caraNextStart"><img src="img/button-caranext.png" alt="next"></div>
+					<div class="hide" onclick="closeModal();" id="caraNextEnd"><img src="img/button-main.png" alt="next"></div>
+				</div>
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+	</div>
+
+<script src="js/swiper-bundle.min.js"></script>
+<script src="start.js"></script>
+</body>
+</html>

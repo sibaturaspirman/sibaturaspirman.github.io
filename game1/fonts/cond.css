@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'cond';
+    src: url('cond.eot');
+    src: url('cond.eot?#iefix') format('embedded-opentype'),
+         url('cond.woff') format('woff'),
+         url('cond.otf') format('otf'),
+         url('cond.ttf') format('truetype'),
+         url('cond.svg#cond') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
