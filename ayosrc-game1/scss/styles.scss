@@ -1,0 +1,160 @@
+@import 'reset-src';
+@import 'mixin';
+@import 'fonts';
+@import 'swiper-bundle.min';
+
+$color--black: #640A09;
+
+body{
+  margin:0;padding:0;background:#E10101;
+  font-family: $body--text__font;
+  color: $color--black;
+}
+canvas{
+  // width: 100% !important;
+}
+img{
+  max-width: 100%;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color: #000, $alpha: 0.6);
+  @include vendor(transition, all cubic-bezier(0.39, 0.575, 0.565, 1) 250ms);
+
+  //display: none;
+  &--body{
+    overflow: hidden;
+  }
+  &--hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+.modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  z-index: 1001;
+  width: 100%;
+  height: 100%;
+  @include vendor(transition, all cubic-bezier(0.39, 0.575, 0.565, 1) 250ms);
+  &--hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  &-close{
+    position: absolute;
+    top: -4rem;
+    right: 0;
+    padding: 1rem;
+    cursor: pointer;
+  }
+  &-content{
+    position: relative;
+    max-width: 350px;
+    width: 90%;
+    &:before {
+      display: block;
+      content: "";
+      width: 100%;
+      padding-top: (460 / 343) * 100%;
+    }
+    > .inner {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: url(../img/bg-howtoplay.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+      padding: 4rem 3.5rem 3rem;
+      text-align: center;
+
+      h2{
+        font-family: $font--luckiest;
+        font-size: $text-size-big-large;
+        font-weight: normal;
+        line-height: 1.15;
+        margin-bottom: .7rem;
+      }
+      p{
+        font-size: $text-size-medium;
+        line-height: 1.2;
+        opacity: .8;
+        strong{
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+.swiper-pagination{
+  bottom: 3rem;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+}
+.swiper-pagination-bullet{
+  width: 16px;
+  height: 16px;
+  margin: 0 3px;
+  background-color: #c43634;
+  opacity: .5;
+}
+.swiper-pagination-bullet-active{
+  opacity: 1;
+}
+
+.button{
+  &-caranext{
+    position: absolute;
+    width: 100%;
+    bottom: 4.6rem;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    left: 0;
+    align-items: center;
+    div{
+      width: 60%;
+      position: absolute;
+      bottom: 0;
+      @include vendor(transition, all cubic-bezier(0.39, 0.575, 0.565, 1) 250ms);
+      &.hide{
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+      &:first-child{
+        position: relative;
+      }
+    }
+    img{
+      display: block;
+      width: 100%;
+    }
+  }
+}

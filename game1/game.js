@@ -52,8 +52,13 @@ EPT.Preloader.prototype = {
     }
 };
 EPT.Preloader.resources = {
-    'image': [['bg1', 'img/bg1.png'], ['bg2', 'img/bg2.png'], ['bg3', 'img/bg3.png'], ['bucket', 'img/bucket.png'], ['overlay', 'img/overlay.png'], ['homescreen', 'img/homescreen.png'], ['wing', 'img/item-1.png'], 
-    ['item1', 'img/item-1.png'], ['item2', 'img/item-2.png'],
+    'image': [['bg1', 'img/bg1.png'], ['bg2', 'img/bg2.png'], ['bg3', 'img/bg3.png'], 
+    ['overlay', 'img/overlay.png'], ['homescreen', 'img/homescreen.png'], 
+    
+    ['bucket1', 'img/bucket.png'], ['bucket2', 'img/bucket-2.png'], ['bucket3', 'img/bucket-3.png'], 
+
+    ['item1', 'img/item-1.png'], ['item2', 'img/item-2.png'], ['item3', 'img/item-3.png'], ['item4', 'img/item-4.png'], ['item5', 'img/item-5.png'], ['item6', 'img/item-6.png'], ['item7', 'img/item-7.png'], ['item8', 'img/item-8.png'], ['item9', 'img/item-9.png'], ['item10', 'img/item-10.png'], ['item11', 'img/item-11.png'], ['item12', 'img/item-12.png']
+
     ['shadow', 'img/shadow.png'], ['logo', 'img/logo-k.png'], ['logo-homescreen', 'img/logo-homescreen.png'], ['particle', 'img/particle.png'], ['button-start', 'img/button-main.png'], ['button-restart', 'img/button-restart.png'], ['button-exit', 'img/button-exit.png'], ['button-howtoplay', 'img/button-howtoplay.png']],
     'spritesheet': [],
     'audio': [['bgm1', 'audio/bgm1.mp3'], ['bgm2', 'audio/bgm2.mp3'], ['bgm3', 'audio/bgm3.mp3'], ['berhasil', 'audio/berhasil.mp3'], ['gameover', 'audio/gameover.mp3'], ['swing', 'audio/swing.mp3']]
@@ -77,6 +82,8 @@ EPT.Game.prototype = {
         this.swing = this.add.audio('swing');
         this.swing.volume = 0.3;
 
+        this.timer = this.time.create(false);
+
         this.bg1 = this.add.sprite(0, 0, 'bg1');
         this.bg2 = this.add.sprite(0, 0, 'bg2');
         this.bg3 = this.add.sprite(0, 0, 'bg3');
@@ -91,20 +98,20 @@ EPT.Game.prototype = {
         this._flying = false;
         this.physics.startSystem(Phaser.Physics.ARCADE);
         // this.shadow = this.add.sprite(this.world.centerX - 130, this.world.centerY + 60, 'shadow');
-        this.bucket = this.add.sprite(this.world.centerX, this.world.centerY + 50, 'bucket');
+
+        this.bucketslist = ['bucket1', 'bucket2', 'bucket3'];
+        this.bucket = this.add.sprite(this.world.centerX, this.world.centerY + 50, this.bucketslist[0]);
         this.bucket.anchor.set(0.5);
         this.physics.enable(this.bucket, Phaser.Physics.ARCADE);
         this.bucket.body.setSize(125, 25, 25, 10);
         this.bucket.body.immovable = true;
 
-        this.items = ['item1', 'item2'];
-        this.randomItems = 0;
-        
-        this.wing = this.add.sprite(this.world.centerX, this.world.height - 100, this.items[this.randomItems]);
-        this.wing.anchor.set(0.5);
-        this.physics.enable(this.wing, Phaser.Physics.ARCADE);
-        this.wing.body.setSize(56, 98, 20, 20);
-        this.wingImg = this.add.sprite(0, 0,  this.items[this.randomItems]);
+        this.items = ['item1', 'item2', 'item3', 'item4', 'item5', 'item6', 'item7', 'item8', 'item9', 'item10', 'item11'];
+        this._randomItems = 0;
+
+        this.showItem(this._randomItems);
+
+        this.wingImg = this.add.sprite(0, 0,  this.items[0]);
         this.wingImg.alpha = 0;
         this.wingImg.anchor.set(0.5);
         this.input.onUp.add(this.pointerUp, this);
@@ -180,6 +187,7 @@ EPT.Game.prototype = {
                 this.camera.flash(0x000000, 500, false)
             }, this);
 
+            this.bucket.loadTexture(this.bucketslist[1]);
 
             this.bgm1.stop();
             this.bgm2.play();
@@ -191,6 +199,8 @@ EPT.Game.prototype = {
                 this.bg3.alpha = 1;
                 this.camera.flash(0x000000, 500, false)
             }, this);
+
+            this.bucket.loadTexture(this.bucketslist[2]);
 
             this.bgm2.stop();
             this.bgm3.play();
@@ -207,20 +217,20 @@ EPT.Game.prototype = {
         this.add.tween(this.textScore).to({
             fontSize: 56
         }, 500, Phaser.Easing.Bounce.Out, true);
-        this.wingImg.alpha = 1;
-        this.wingImg.scale.x = 1;
-        this.wingImg.scale.y = 1;
-        this.wingImg.x = this.wing.x;
-        this.wingImg.y = this.wing.y;
-        this.add.tween(this.wingImg).to({
-            alpha: 0,
-            x: this.bucket.x,
-            y: this.bucket.y - 50
-        }, 300, Phaser.Easing.Linear.None, true);
-        this.add.tween(this.wingImg.scale).to({
-            x: 0,
-            y: 0
-        }, 300, Phaser.Easing.Linear.None, true);
+        // this.wingImg.alpha = 1;
+        // this.wingImg.scale.x = 1;
+        // this.wingImg.scale.y = 1;
+        // this.wingImg.x = this.wing.x;
+        // this.wingImg.y = this.wing.y;
+        // this.add.tween(this.wingImg).to({
+        //     alpha: 0,
+        //     x: this.bucket.x,
+        //     y: this.bucket.y - 50
+        // }, 300, Phaser.Easing.Linear.None, true);
+        // this.add.tween(this.wingImg.scale).to({
+        //     x: 0,
+        //     y: 0
+        // }, 300, Phaser.Easing.Linear.None, true);
         if (this._score >= 100) {
             this.wing.x = this.rnd.integerInRange(50, this.world.width - 50)
         } else {
@@ -230,30 +240,32 @@ EPT.Game.prototype = {
         this.wing.body.gravity.y = 0;
         this.wing.body.velocity.x = 0;
         this.wing.body.velocity.y = 0;
-        var messages = ['mantap!', 'ayee!', 'sekut!', 'wadidaw!'];
-        var rand = this.rnd.integerInRange(0, 3);
+        var messages = ['Keren', 'Mantap', 'Siip', 'Masuk!', 'Asoyy', 'Jebreet!', 'Hebring', "Yo'i", 'Sabi', "Sa'ik", 'Mantul', 'Savage!', 'Leh Uga'];
+        var rand = this.rnd.integerInRange(0, 12);
         this.showMessage(messages[rand] + '!');
 
+        var randX = this.rnd.integerInRange(0, 10);
+        
+        // this.wingImg.loadTexture(this.items[randX]);
 
-        var randX = this.rnd.integerInRange(0, 1);
-        this._randomItems = randX;
+        // this.timer.loop(1500, console.log("change"), this);
 
-        console.log(this._randomItems);
-
-        // var items = ['item1', 'item2'];
-        // var randItems = this.rnd.integerInRange(0, 2);
-
-        // this.wing = this.add.sprite(this.world.centerX, this.world.height - 100, items[0]);
-
+        this.wing.loadTexture(this.items[randX]);
         this.wing.scale.x = 0.5;
         this.wing.scale.y = 0.5;
         this.add.tween(this.wing.scale).to({
             x: 1,
             y: 1
-        }, 500, Phaser.Easing.Bounce.Out, true)
+        }, 500, Phaser.Easing.Bounce.Out, true);
+    },
+    showItem: function(current){
+        this.wing = this.add.sprite(this.world.centerX, this.world.height - 100, this.items[current]);
+        this.wing.anchor.set(0.5);
+        this.physics.enable(this.wing, Phaser.Physics.ARCADE);
+        this.wing.body.setSize(56, 98, 20, 20);
     },
     showMessage: function(currentMessage) {
-        var myMessage = game.add.text(game.world.width * 0.5, game.camera.y + 180, '' + currentMessage, {
+        var myMessage = game.add.text(game.world.width * 0.5, this.world.centerY - 200, '' + currentMessage, {
             font: "56px Luckiest Guy",
             fill: "#FFF",
             align: "center"
@@ -261,7 +273,7 @@ EPT.Game.prototype = {
         myMessage.anchor.set(0.5);
         game.add.tween(myMessage).to({
             alpha: 0,
-            y: game.camera.y + 230
+            y: this.world.centerY - 280
         }, 1500, Phaser.Easing.Linear.None).start()
     },
     initUI: function() {
@@ -347,15 +359,6 @@ EPT.Game.prototype = {
         default:
             {}
         }
-
-        //AUDIO
-        // if (this._score <= 100) {
-        //     this.bgm1.play();
-        // }else if (this._score <= 200) {
-        //     this.bgm2.play();
-        // }else if (this._score > 200) {}{
-        //     this.bgm3.play();
-        // }
     },
     statePlaying: function() {
         if (this._score >= 200) {
