@@ -102,7 +102,7 @@ EPT.Game.prototype = {
         this.wing.anchor.set(0.5);
         this.physics.enable(this.wing, Phaser.Physics.ARCADE);
         this.wing.body.setSize(56, 98, 20, 20);
-        this.wingImg = this.add.sprite(0, 0, 'item2');
+        this.wingImg = this.add.sprite(0, 0, items[0]);
         this.wingImg.alpha = 0;
         this.wingImg.anchor.set(0.5);
         this.input.onUp.add(this.pointerUp, this);
