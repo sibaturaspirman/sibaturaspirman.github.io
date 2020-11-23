@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="csrf-token" content="spd16XAvgkpDHSVVFxlxaRLLtixa9ir5uLxztugq" />
+  <title>Mantap Melangkah</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta property="og:title" content="Mantap Melangkah" />
+  <meta property="og:description" content="Temukan inspirasi agar selalu mantap setiap hari" />
+  <meta property="og:url" content="" />
+  <meta property="og:image" content="assets/ico/richlink.jpg" />
+
+  <link rel="stylesheet" href="https://magnum.antigravity.dev/css/main.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="shortcut icon" href="https://magnum.antigravity.dev/assets/ico/favicon.ico" type="image/x-icon">
+  <meta http-equiv="cache-control" content="no-cache">
+  <style>
+    .bintang {
+      color: red;
+      font-size: 17px;
+    }
+    .bs-canvas-overlay {
+        opacity: 0;
+      z-index: -1;
+    }
+
+    .bs-canvas-overlay.show {
+        opacity: 0.85;
+      z-index: 1100;
+    }
+
+    .bs-canvas-overlay, .bs-canvas {
+      transition: all .4s ease-out;
+      -webkit-transition: all .4s ease-out;
+      -moz-transition: all .4s ease-out;
+      -ms-transition: all .4s ease-out;
+    }
+
+    .bs-canvas {
+      top: 0;
+      z-index: 1110;
+      overflow-x: hidden;
+      overflow-y: auto;
+      width: 330px;
+    }
+
+    .bs-canvas-left {
+      left: 0;
+      margin-left: -330px;
+    }
+
+    .bs-canvas-right {
+      right: 0;
+      margin-right: -330px;
+    }
+
+    .btn-menu {
+      display: inline-block;
+      /* font-weight: 400; */
+      color: #ffffff;
+      text-align: center;
+      vertical-align: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      background-color: transparent;
+      /* border: 1px solid transparent; */
+      padding: 0px 0px 0px 0px;
+      font-size: 2rem;
+      line-height: 0;
+      /* border-radius: .25rem; */
+      background-color:transparent;
+      border-color:transparent!important;
+      transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+    .btn-div{
+      padding-right: 165px;
+    }
+
+    .bg-sidebar{
+      background: url("/images/background-magnum.png") right repeat-y;
+      background-size: cover;
+    }
+
+    .list-menu {
+      text-decoration: none;
+      position: relative;
+      display: block;
+      padding: .75rem 1.25rem;
+      margin-bottom: -1px;
+      background-color: #fff0;
+      border: 1px solid rgb(0 0 0 / 0%);
+    }
+
+    .list-menu-action {
+      width: 100%;
+      color: #ffffff;
+      text-align: inherit;
+    }
+
+    .btn-menu:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    .txt-login {
+      color : white;
+      font-size: 14px;
+    }
+    .txt-title {
+      color : white;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .txt-syarat {
+      color : white;
+      font-size: 15px;
+    }
+    .item-syarat{
+      padding-left: 10px;
+      list-style-position: outside;
+      list-style-type: "✓"!important;
+    }
+    /* .item-syarat li:before {
+      content: '✓';
+    } */
+    .ceklist {
+      padding-left: 10px;
+      list-style-type: "✓"!important;
+    }
+    .small-txt{
+      color : white;
+      font-size: 12px;
+    }
+    .txt-hapus{
+      color : red;
+      font-size: 12px;
+    }
+    .medium-txt {
+      color: white;
+      font-size: 20px;
+    }
+    .wraptext-checkbox {
+      display: block;
+      padding-left: 15px;
+      text-indent: -15px;
+    }
+    .input-checkbox {
+      width: 13px;
+      height: 13px;
+      padding: 0;
+      margin:0;
+      vertical-align: bottom;
+      position: relative;
+      top: -1px;
+      *overflow: hidden;
+    }
+    .big-txt-login{
+      color : white;
+      font-weight: 500;
+    }
+
+    .input-login {
+      font-family: sans-serif!important;
+      /* color: #555555;
+      line-height: 1.2; */
+      font-size: 14px!important;
+      /* display: block;
+      width: 100%; */
+      /* background: transparent; */
+      height: 45px!important;
+      /* padding: 0 25px 0 25px; */
+      background: #1A2EC6!important;
+      color: #ffffff!important;
+    }
+    .pading-input {
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+    /* .pading-pw {
+      padding-bottom: 2px;
+    } */
+    .btn-login {
+      color: blue;
+      background: #fdfdff;
+      border: 1px solid #0f2ea1;
+      font-weight: bold;
+      letter-spacing: .58px;
+      border-radius: 4px;
+      padding: .8rem 4.5rem;
+      width: 100%;
+    }
+    .btn-regist {
+      color: white;
+      background: #fdfdff;
+      border: 1px solid #0f2ea1;
+      font-weight: bold;
+      font-size: large;
+      letter-spacing: .58px;
+      border-radius: 4px;
+      padding: .8rem 4.5rem;
+      width: 100%;
+      background: transparent;
+      border: 1px solid #141f61;
+    }
+    .border-input {
+      border: none!important;
+    }
+    hr {
+      margin-top: 0rem;
+      margin-bottom: 0rem;
+      border: 0px;
+      border-top: 1px solid rgb(255 255 255 / 37%);
+    }
+
+    a:link {
+      text-decoration: none;
+    }
+
+    /* index header */
+    .txt-white {
+      color: white;
+    }
+
+    .navbar-top {
+      height: auto!important;
+    }
+    /* index header */
+
+    .btn-default {
+      color: blue;
+      background: #fdfdff;
+      /* text-transform: uppercase; */
+      border: 1px solid #0f2ea1;
+      /* margin-bottom: 20px; */
+      font-weight: bold;
+      letter-spacing: .58px;
+      border-radius: 4px;
+      padding: .8rem 4.5rem;
+      width: 100%;
+    }
+
+    .btn-mainskrng {
+      color: blue;
+      background: #fdfdff;
+      /* text-transform: uppercase; */
+      border: 1px solid #0f2ea1;
+      margin-bottom: 20px;
+      font-weight: bold;
+      letter-spacing: .58px;
+      border-radius: 4px;
+      padding: .8rem 5rem;
+    }
+
+    .margin-title {
+      margin-top: 10px;
+      margin-bottom: 13px;
+    }
+
+    .text-desc {
+      margin-bottom: 0rem!important;
+      font-size: 11px;
+    }
+
+    .img-logo-all-access {
+      display: block;
+      margin-left: 0;
+      margin-right: auto;
+      width: 40%;
+      height: auto;
+      padding: 2px;
+      margin-bottom: 25px;
+    }
+    .img-breanded-left {
+      max-width: 100%;
+      height: 44px;
+    }
+    .img-breanded-right {
+      max-width: 100%;
+      height: 44px;
+    }
+
+    a:hover {
+      color: #2cc9d9!important;
+    }
+    .txt-menu {
+      font-size:18px;
+      margin-right: 120px;
+    }
+    .modal-layouts {
+      background-color: #14195F;
+      border-radius: 10px;
+    }
+    .img-headerleft {
+      margin-right: 250px;
+    }
+    .img-headerright {
+      margin-left: 250px;
+    }
+    /* template quiz multiple choise */
+    .form-quiz {
+      margin-top: 15px;
+      margin-bottom: 25px;
+    }
+    label.radio {
+        cursor: pointer
+    }
+
+    label.radio input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        visibility: hidden;
+        pointer-events: none
+    }
+
+    label.radio span {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 15px;
+        border: 1px solid #141f61;
+        display: inline-block;
+        color: white;
+        width: 100%;
+        height: 40px;
+        text-align: left;
+        border-radius: 3px;
+        margin-top: 10px;
+        background-color: #141f61;
+        font-size: 12px;
+        font-weight: normal;
+    }
+
+    label.radio input:checked+span {
+        border-color: #2cc9d9;
+        background-color: #2cc9d9;
+        color: #fff
+    }
+
+    .ans {
+        margin-left: 0px;
+    }
+
+    .btn:focus {
+        outline: 0 !important;
+        box-shadow: none !important
+    }
+
+    .btn:active {
+        outline: 0 !important;
+        box-shadow: none !important
+    }
+
+    .text-area {
+      margin-top: 10px;
+      background-color: #141f61;
+      border-color: #141f61;
+      color: white;
+      font-size: 12px;
+    }
+    .text-area:focus{
+      margin-top: 10px;
+      background-color: #141f61;
+      border-color: #141f61;
+      color: white;
+    }
+    .text-area:hover{
+      margin-top: 10px;
+      background-color: #141f61;
+      border-color: #141f61;
+      color: white;
+    }
+
+    .card-pertanyaan {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid rgba(2,3,13,.125);
+        border-radius: 5px;
+        width: 150px;
+        background-color: #1d3d66;
+        margin-top: 10px;
+    }
+    .card-body-pertanyaan {
+        flex: 1 1 auto;
+        /* padding: 3px; */
+        padding-top: 3px;
+        padding-bottom: 3px;
+        padding-left: 5px;
+        padding-right: 5px;
+        border-radius: 10px;
+        font-size: 12px;
+        text-align: center;
+        color: #2cc9d9;
+    }
+    .card-result-quiz {
+      margin: auto;
+      width: 29%;
+      border: 1px solid white;
+      padding: 10px;
+      background-color: #141f61;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    .card-body-quiz {
+        flex: 1 1 auto;
+        /* padding: 3px; */
+        /* padding-top: 3px; */
+        padding-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 10px;
+        font-size: 12px;
+        text-align: center;
+        color: white;
+    }
+    .img-result-quiz {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10px;
+      margin-bottom:15px;
+      /* width:100%;
+      height:auto; */
+      padding:2px;
+    }
+    .alert {
+      position: relative;
+      padding: 0.1rem 0.1rem;
+      border: 1px solid transparent;
+    }
+    .alert-msg {
+      position: relative;
+      padding: 0.1rem 0.5rem;
+      border: 1px solid transparent;
+    }
+    .alert-msg-failed {
+      background: #ae2b2b;
+      color: #fff;
+    }
+    .alert-msg-success {
+      background: #28a745;
+      color: #fff;
+    }
+    /* template quiz multiple choise */
+    @media  screen and (max-width: 3000px) {
+      .txt-header {
+        font-size:20px;
+        /* margin-left: 225px; */
+        margin-left: 300px;
+      }
+      .logo-user {
+        font-size:20px;
+        /* margin-left: 225px; */
+        margin-right: 120px;
+      }
+      .txt-menu {
+        font-size:18px;
+        margin-right: 120px;
+      }
+      .img-center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width:50%;
+        height:auto;
+        padding:2px;
+        margin-bottom:10px;
+      }
+      .img-socstate {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width:100%;
+        height:auto;
+        padding:2px;
+        margin-bottom:10px;
+      }
+    }
+
+    @media  screen and (max-width: 700px) {
+      .txt-header {
+        display: block;
+        text-align: left;
+        margin-left: 15px;
+      }
+      .logo-user {
+        display: block;
+        text-align: right;
+        margin-right: 15px;
+      }
+      .txt-menu {
+        display: block;
+        text-align: right;
+        margin-right: 15px;
+      }
+      .img-center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width:100%;
+        height:auto;
+        padding:2px;
+        margin-bottom:10px;
+      }
+    .navbar-magnum .navbar-top .navbar-img img {
+        height: 20px!important;
+        margin-left: 10px
+      }
+    .navbar-magnum .navbar-top {
+        text-align: left;
+      }
+    .btn-mainskrng {
+        color: blue;
+        background: #fdfdff;
+        /* text-transform: uppercase; */
+        border: 1px solid #0f2ea1;
+        margin-bottom: 20px;
+        font-weight: bold;
+        letter-spacing: .58px;
+        border-radius: 4px;
+        padding: .5rem 0rem;
+        width: 90%;
+      }
+    .img-headerright {
+        margin: 0px;
+        position: absolute;
+        right: 20px;
+      }
+    .img-headerleft {
+        margin: 0px;
+        position: relative;
+        left: 20px;
+      }
+      .img-breanded-left {
+        max-width: 100%;
+        height: 30px;
+      }
+      .img-breanded-right {
+        max-width: 100%;
+        height: 30px;
+      }
+    }
+
+    @media  screen and (max-width: 500px) {
+      .txt-header {
+        display: block;
+        font-size:13px;
+        text-align: left;
+        margin-left: 15px;
+        margin-top: 5px;
+      }
+      .logo-user {
+        display: block;
+        font-size:13px;
+        text-align: right;
+        margin-right: 15px;
+        margin-top: 5px;
+      }
+      .txt-menu {
+        display: block;
+        font-size:13px;
+        text-align: right;
+        margin-right: 15px;
+      }
+      .btn-mainskrng {
+        color: blue;
+        background: #fdfdff;
+        /* text-transform: uppercase; */
+        border: 1px solid #0f2ea1;
+        margin-bottom: 20px;
+        font-weight: bold;
+        letter-spacing: .58px;
+        border-radius: 4px;
+        padding: .5rem 0rem;
+        width: 90%;
+      }
+      .btn-login {
+        color: blue;
+        background: #fdfdff;
+        border: 1px solid #0f2ea1;
+        font-weight: bold;
+        letter-spacing: .58px;
+        border-radius: 4px;
+        padding: .5rem 4.5rem;
+        width: 100%;
+      }
+      .img-breanded-left {
+        max-width: 100%;
+        height: 25px;
+      }
+      .img-breanded-right {
+        max-width: 100%;
+        height: 25px;
+      }
+    }
+
+    /* Only for demo */
+    body {
+        min-height: 100vh;
+        background-color: #02030d;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <nav class="navbar-magnum ">
+    <div class="navbar-top" style="height: auto;">
+      <div class="row">
+        <div class="col-6">
+          <a href="/" class="">
+            
+            <img src="https://magnum.antigravity.dev/assets/img/brand/logo_mantapmelangkah.png" class="img-fluid logo-magnum txt-header" alt="Logo Mantap Melangkah">
+          </a>
+        </div>
+        <div class="col-6">
+          <span class="txt-white txt-menu"><a href="https://magnum.antigravity.dev/register" class="txt-white">Daftar</a>/<a href="https://magnum.antigravity.dev/login" class="txt-white">Login</a></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main id="gamearea">
+    <section class="section-magnum game">
+      <div class="magnum-wrapper game-wrapper txt-white" id="wrap-magnum">
+        <h3>Social Statement Lo</h3>
+        <p>Lo bisa save social statment sekarang atau lihat lagi nanti di halaman profil lo</p>
+        <div class="game-statement">
+          <p>Tahan gambar untuk menyimpan</p>
+          <div class="block-image">
+            <img src="./assets/images/STATEMENT 1.jpg" alt="">
+          </div>
+        </div>
+        <a href="javascript:;" onclick="alert('quiz')" class="game-nextquiz">
+          <div class="block-image b1">
+            <img src="./assets/images/creativox.png" alt="">
+          </div>
+          <p>Sedikit Lagi buat dapetin Gift dari creativox!</p>
+          <div class="block-image b2">
+            <img src="./assets/images/right.svg" alt="">
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+        <div class="footer-wrapper">
+            <a href="/" class="logo-footer">
+                <img src="https://magnum.antigravity.dev/assets/img/brand/logo_mantapmelangkah.png" class="img-fluid logo-footer-magnum" alt="Images Logo">
+            </a>
+            <div class="footer-menu">
+                <ul>
+                    <li>
+                        <a href="/syarat-ketentuan">Syarat &amp; Ketentuan</a>
+                    </li>
+                    <li>
+                        <a href="/daftar-pertanyaan">Daftar Pertanyaan</a>
+                    </li>
+                    <li>
+                        <a href="https://www.pmiprivacy.com/id/consumer" target="_blank">Kebijakan Privasi</a>
+                    </li>
+                    <li>
+                        <a href="/hubungi-kami">Hubungi Kami</a>
+                    </li>
+                    <li>
+                        <a href="https://www.sampoerna.com/resources/docs/default-source/market_pages_smoke_and_health/health-effects-of-smoking-id.pdf?sfvrsn=d07f50b4_2" target="_blank">Perihal Merokok</a>
+                    </li>
+                    <li>
+                        <div class="optanon-show-settings-popup-wrapper"><div class="optanon-show-settings-button optanon-toggle-display"><div class="optanon-show-settings-left"></div><div class="optanon-show-settings-middle"><a class="optanon-show-settings">Pengaturan Kuki</a></div><div class="optanon-show-settings-right"></div></div></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <style>
+        .optanon-show-settings-popup-wrapper .optanon-show-settings-middle {
+            background: none !important;
+        }
+        .optanon-show-settings-popup-wrapper .optanon-show-settings-middle a.optanon-show-settings {
+            color: #fff !important;
+            font-weight: 500;
+            font-family: Metropolis,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+        }
+        @media  only screen and (max-width: 768px) {
+            .optanon-show-settings-popup-wrapper .optanon-show-settings-middle a.optanon-show-settings {
+                margin-top: .1rem !important;
+            }
+        }
+    </style>
+    <div class="footer-warning">
+        <img src="https://magnum.antigravity.dev/assets/img/common/warning/graphic_peringatan.png" class="img-fluid d-none d-md-block" alt="Images Warning">
+        <img src="https://magnum.antigravity.dev/assets/img/common/warning/banner_peringatan_mobile.png" class="img-fluid d-block d-md-none" alt="Images Warning">
+    </div>
+  </footer>
