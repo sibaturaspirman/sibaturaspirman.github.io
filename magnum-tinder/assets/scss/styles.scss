@@ -1,0 +1,418 @@
+@import 'mixin';
+@import 'fonts';
+
+body{
+  @include bp-425{
+    // overflow: hidden;
+    // height: auto;
+    // min-height: auto !important;
+  }
+}
+
+// footer{
+//   padding: 0;
+// }
+
+.navbar-magnum .navbar-top{
+  @include bp-425{
+    padding: 1.2rem 0;
+  }
+}
+
+// HELPER
+.txt-white {
+  color: white;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(#000, 0.6);
+  @include vendor(transition, all cubic-bezier(0.39, 0.575, 0.565, 1) 250ms);
+  pointer-events: auto;
+
+  //display: none;
+  &.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  z-index: 1001;
+  width: 100%;
+  height: 100%;
+  @include vendor(transition, all cubic-bezier(0.39, 0.575, 0.565, 1) 250ms);
+  pointer-events: auto;
+  &-area{
+    max-width: 90%;
+    width: 370px;
+    background: radial-gradient(104.79% 100% at 50.15% 0%, #1A2EC6 0%, #0C1784 100%);
+    border: 1.5px solid #FFFFFF;
+    @include borderRadius(4px);
+    padding: 10px;
+    @include vendor(transition, all cubic-bezier(0.39, 0.575, 0.565, 1) 250ms);
+    @include vendor(transform, translateY(0%))
+  }
+  &-body{
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+    color: #fff;
+    text-align: center;
+    p{
+      
+    }
+  }
+
+  //display: none;
+  &.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    @include vendor(transform, translateY(20%))
+  }
+}
+
+.block-image{
+  img{
+    display: block;
+    max-width: 100%;
+  }
+}
+
+.button{
+  margin: 0;
+  border: 0;
+  padding: .6rem;
+  @include vendor(border-radius, 4px);
+  font-weight: 700;
+  color: #192894;
+  background-color: #fff;
+}
+
+.game{
+  padding-top: 2rem;
+  @include bp-1024{
+    // padding: 2rem 0;    
+    // height: calc(100vh - 140px);
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+  }
+  h2{
+    @include bp-425{
+      font-size: 22px;
+      // font-size: 15px;
+    }
+  }
+  &-wrapper{
+    width: 450px !important;
+    @include bp-425{
+      width: 90% !important;
+      overflow: hidden;    
+      // top: -5vh;
+      // position: relative;
+    }
+  }
+  &-nextquiz{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1A2EC6;
+    color: #fff;
+    padding: 14px;
+    @include vendor(border-radius, 8px);
+    margin-top: .8rem;
+    .b1{
+      width: 40px;
+    }
+    .b2{
+      width: 32px;
+    }
+    p{
+      margin: 0;
+      padding: 0 15px;
+      width: calc(100% - 72px);
+      font-weight: 700;
+    }
+  }
+  &-statement{
+    background-color: #fff;
+    @include vendor(border-radius, 8px);
+    p{
+      color: #EE2323;
+      text-align: center;
+      padding: 14px 0;
+      margin: 0;
+    }
+    .block-image{
+      img{
+        width: 100%;
+        @include vendor(border-bottom-left-radius, 8px);
+        @include vendor(border-bottom-right-radius, 8px);
+      }
+    }
+  }
+  &-area{
+    position: relative;
+    width: 50%;
+    margin: 1.3rem auto 0;
+    @include bp-425{
+      width: 60%;
+      // width: 41%;
+    }
+    &:before {
+      display: block;
+      content: "";
+      width: 100%;
+      padding-top: (325 / 224) * 100%;
+    }
+    > .inner {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &__list{
+      position: relative;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    &__info{
+      position: absolute;
+      // top: 0;
+      // left: 0;
+      // right: 0;
+      // bottom: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 55%;
+      // width: 70%;
+      @include vendor(transition, all cubic-bezier(0.39, 0.575, 0.565, 1) 250ms);
+      &.hide{
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        z-index: -1;
+      }
+      #lottie{
+        background-color:transparent;
+        width:100%;
+        display:block;
+        overflow: hidden;
+        transform: translate3d(0,0,0);
+        text-align: center;
+        opacity: 1;
+      }
+    }
+    &-card{
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      z-index: 1;
+      background-position: center;
+      background-size: cover;
+      @include vendor(border-radius, 4px);
+      @include vendor(transition, all cubic-bezier(0.39, 0.575, 0.565, 1) 450ms);
+      border: 2px solid transparent;
+      opacity: .7;
+      overflow: hidden; 
+      &.moving{
+        transition: none;
+        cursor: -webkit-grabbing;
+        cursor: grabbing;
+      }
+      &:nth-child(2){
+        @include vendor(transform, rotate(4deg));
+      }
+      &:nth-child(3){
+        @include vendor(transform, rotate(-4deg));
+      }
+      &:nth-child(4){
+        @include vendor(transform, rotate(8deg));
+      }
+      &:nth-child(5){
+        @include vendor(transform, rotate(-10deg));
+      }
+      &.active{
+        opacity: 1 !important;
+        z-index: 2;
+        border-color: #fff;
+        @include vendor(box-shadow, 0px 5px 15px rgba(15, 51, 189, 0.8));
+        @include vendor(transform, rotate(0deg));
+        &-left{
+          @include vendor(transform, rotate(-20deg) translateX(-100%) translateY(-10%));
+        }
+        &-right{
+          @include vendor(transform, rotate(20deg) translateX(100%) translateY(-10%));
+        }
+      }
+      &.gone{
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+  }
+  &-choice{
+    width: 150px;
+    margin: 2rem auto 0;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    // @include bp-425{
+    //   width: 110px;
+    // }
+    &--fakta{
+      .game{
+        &-choice{
+          &__wrapper{
+            &:first-child{
+              opacity: .3;
+              @include vendor(transform, scale(0.5));
+            }
+            &:last-child{
+              opacity: 1;
+              @include vendor(transform, scale(1.3));
+            }
+          }
+        }
+      }
+    }
+    &--mitos{
+      .game{
+        &-choice{
+          &__wrapper{
+            &:first-child{
+              opacity: 1;
+              @include vendor(transform, scale(1.3));
+            }
+            &:last-child{
+              opacity: .3;
+              @include vendor(transform, scale(0.5));
+            }
+          }
+        }
+      }
+    }
+    &__wrapper{
+      position: relative;
+      width: 46%;
+      @include vendor(transition, all cubic-bezier(0.39, 0.575, 0.565, 1) 450ms);
+      &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: (1 / 1) * 100%;
+      }
+      > .inner {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: #fff;
+        @include vendor(border-radius, 50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        span{
+          display: block;
+          color: #070A2B;
+          font-size: 16px;
+          font-weight: 700;
+          // @include bp-425{
+          //   font-size: 11px;
+          // }
+        }
+      }
+    }
+  }
+  &-progress{
+    width: 150px;
+    margin: 1rem auto 0;
+    text-align: center;
+    &__bar{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      span{
+        display: block;
+        width: 15px;
+        height: 15px;
+        @include vendor(border-radius, 50%);
+        border: 1px solid #3AA6E3;
+        background-color: transparent;
+        position: relative;
+        @include transition(all 250ms cubic-bezier(0.215, 0.61, 0.355, 1));
+        &.current{
+          background-color: #fff;
+        }
+        &.gone{
+          background-color: #3AA6E3;
+        }
+        &:first-child{
+          &::after{
+            display: none;
+          }
+        }
+        &:last-child{
+          &::before{
+            display: none;
+          }
+        }
+        &::after,
+        &::before{
+          content: "";
+          display: block;
+          height: 1px;
+          width: 100%;
+          position: absolute;
+          top: 6px;
+          background-color: #3AA6E3;
+          // z-index: -1;
+        }
+        &::after{
+          left: -100%;
+        }
+        &::before{
+          right: -100%;
+        }
+      }
+    }
+    p{
+      color: #3AA6E3;
+      margin: 10px 0 0;
+      font-weight: 500;
+    }
+  }
+}
