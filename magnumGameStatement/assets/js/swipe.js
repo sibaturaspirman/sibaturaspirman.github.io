@@ -52,7 +52,6 @@ var gameData = [
     fakta: '<p>5 - Ah masa sih? Stereotip begini perlu dipatahin supaya lo bisa mantapkan langkah. Semangat terus untuk tunjukin jati diri lo tanpa menghiraukan apa kata orang, bro.</p>'
   }
 ];
-var paramData = [];
 
 document.getElementById('gamearea').addEventListener("click", function(){
   gameinfo.classList.add("hide");
@@ -101,30 +100,32 @@ function closeModal(gameIndex){
   if(gameIndex == 5){
 
     // SENT DATA RESULT AJAX
-    location.href = 'statement.html'
-    // var apiurl = "https://magnum.antigravity.dev";
-    // paramData.push({"PersonId": "4234534", "Result": score});
-    // $.ajax({
-    //   url: apiurl+"/api/result/game",
-    //   data: paramData,// Add as Data the Previously create formData
-    //   type:"POST",
-    //   contentType:false,
-    //   processData:false,
-    //   cache:false,
-    //   dataType:"json",
-    //   error:function(err, data){
-    //       console.error(err);
-    //       console.log('failed push, try again')
-    //   },
-    //   success:function(data){
-    //       // console.log(data);
-    //       location.href = 'statement.html'
-
-    //   },
-    //   complete:function(){
-    //       console.log("Request finished.");
-    //   }
-    // });
+    var apiurl = "https://jsonplaceholder.typicode.com/posts";
+    $.ajax({
+      url: apiurl,
+      data: {
+        title: 'magnum',
+        body: score,
+        userId: score,
+      },
+      type:"POST",
+      dataType:"json",
+      beforeSend: function() {
+        modalFaktaButton.innerHTML = "Loading...";
+        modalMitosButton.innerHTML = "Loading...";
+      },
+      error:function(err){
+          console.error(err);
+          console.log("error");
+      },
+      success:function(data){
+          console.log(data);
+          location.href="statement.html";
+      },
+      complete:function(){
+          console.log("Request finished.");
+      }
+    });
 
   }else{
     backdrop.classList.add("hide");
